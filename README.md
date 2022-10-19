@@ -1,2 +1,2 @@
-# Software-Engineering-Sudoku-C-
+# Software-Engineering-Sudoku
 GitHub Repository for Team C++ Sudoku Project
