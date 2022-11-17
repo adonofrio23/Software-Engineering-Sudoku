@@ -1,11 +1,13 @@
 using namespace std;
+#include <iostream>
+#include <list>
 
 // Cell Object
 class Cell {
 public:
     // Data  Members
     int value;
-    int[] notes;
+    list<int> notes;
     bool hardWired;
     int solution;
     int row;
@@ -34,7 +36,7 @@ public:
 
     bool isHardWired()
     {
-        if (isHardWired == true)
+        if (hardWired == true)
             return true;
 
         return false;
@@ -45,14 +47,14 @@ public:
         hardWired = true;
     }
 
-    void setNotes(int[] note)
+    void setNotes(list<int> note)
     {
         notes = note;
     }
 
-    int[] getNotes()
+    list<int> getNotes()
     {
-        return notes
+        return notes;
     }
 
     int getRow()
@@ -66,7 +68,7 @@ public:
     }
 
     // Constructor
-    cell(int r, int c)
+    Cell(int r, int c)
     {
         row = r;
         col = c;
