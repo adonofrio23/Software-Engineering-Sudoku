@@ -30,23 +30,22 @@ bool CheckVal(Puzzle * puzzle, int row, int col) {
     }
 
 
-bool SolveBruteForce(Puzzle* puzzle) {
-    for (int i = 0; i < 9; i++) {
-    	for (int j = 0; j < 9; j++) {
-    		if (puzzle->GetCell(i, j)->GetValue() == 0) {
-    			for (int k = 1; k <= 9; k++) {
-    				puzzle->GetCell(i, j)->SetValue(k);
-    				if (CheckVal(puzzle, i, j) && SolveBruteForce(puzzle))        
-    					return true;
-    				puzzle->GetCell(i, j)->SetValue(0);
-    			}
-    		  return false;
-    	    }
-    	}
-    }
-    	return true;
-}
-
+void SolveBruteForce(Puzzle* puzzle) {
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if (puzzle->GetCell(i, j)->GetValue() == 0) {
+					for (int k = 1; k <= 9; k++) {
+						puzzle->GetCell(i, j)->SetValue(k);
+						if (CheckVal(puzzle, i, j) && CheckPuzzle(puzzle)) {
+							SolveBruteForce(puzzle);
+						}
+						puzzle->GetCell(i, j)->SetValue(0);
+					}
+				}
+			}
+		}
+		PrintPuzzle(puzzle);
+	}
 
 // CheckPuzzle checks if the puzzle is correct
 // https://www.geeksforgeeks.org/check-if-given-sudoku-board-configuration-is-valid-or-not/
