@@ -7,6 +7,7 @@ class Cell {
 public:
     // Data  Members
     int value;
+    int size;
     list<int> notes;
     bool hardWired;
     int solution;
@@ -21,7 +22,7 @@ public:
 
     void setSolution(int answer)
     {
-        solution = answer
+        solution = answer;
     }
 
     int getValue()
@@ -47,9 +48,19 @@ public:
         hardWired = true;
     }
 
-    void setNotes(list<int> note)
+    void setSize(int s)
     {
-        notes = note;
+        size = s;
+    }
+
+    int getSize() 
+    {
+        return size;
+    }
+
+    void setNotes()
+    {
+        notes = list<int> (size);
     }
 
     list<int> getNotes()
@@ -68,6 +79,7 @@ public:
     }
 
     // Constructor
+    // Add Notes and notes size to constructor
     Cell(int r, int c)
     {
         row = r;
