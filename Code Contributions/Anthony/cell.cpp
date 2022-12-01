@@ -8,7 +8,7 @@ public:
     // Data  Members
     int value;
     int size;
-    list<int> notes;
+    int notes [16];
     bool hardWired;
     int solution;
     int row;
@@ -58,12 +58,15 @@ public:
         return size;
     }
 
-    void setNotes()
+    void setNotes(int value)
     {
-        notes = list<int> (size);
+        if (notes[value-1] = 0)
+            notes[value-1] = value;
+        else
+            notes[value-1] = 0;
     }
 
-    list<int> getNotes()
+    int * getNotes()
     {
         return notes;
     }
@@ -78,13 +81,6 @@ public:
         return col;
     }
 
-    // Constructor
-    // Add Notes and notes size to constructor
-    Cell(int r, int c)
-    {
-        row = r;
-        col = c;
-    }
 };
 
 // Testing Cell Object 
