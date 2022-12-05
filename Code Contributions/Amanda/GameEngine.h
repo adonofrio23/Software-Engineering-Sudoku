@@ -6,12 +6,6 @@
 class GameEngine
 {
     public:
-        // default constructor
-        GameEngine();
-        // constructor instantiating currentValue
-        GameEngine(int thisValue);
-        // constructor creating all member variables
-        GameEngine(int thisValue, Puzzle thisPuzzle, History thisHistory);
         // sets current value using parameter val, returns void
         void SetCurrentValue(int val);
         // returns the current value

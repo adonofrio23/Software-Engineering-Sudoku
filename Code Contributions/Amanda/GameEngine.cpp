@@ -6,24 +6,6 @@
 
 using namespace std;
 
-// default constructor
-GameEngine::GameEngine()
-{
-    // intentionally empty
-}
-
-GameEngine::GameEngine(int thisValue)
-{
-    currentValue = thisValue;
-}
-
-GameEngine::GameEngine(int thisValue, Puzzle thisPuzzle, History thisHistory)
-{
-    currentValue =  thisValue;
-    puzzle = thisPuzzle;
-    history = thisHistory;
-}
-
 void GameEngine::SetCurrentValue(int val)
 {
     currentValue = val;
