@@ -29,7 +29,10 @@ class GameEngine
         // returns an array of ints of all notes in a particular cell
         int* SetNote(int row, int col);
     private:
+        // stores currentValue integer
         int currentValue;
+        // stores puzzle object
         Puzzle puzzle;
+        //stores history object
         History history;
 }
