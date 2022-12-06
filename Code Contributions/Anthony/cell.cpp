@@ -4,27 +4,32 @@
 using namespace std;
 
 // Member Functions()
-int Cell::getSolution() 
+int Cell::GetSolution() 
 {
     return solution;
 }
 
-void Cell::setSolution(int answer)
+void Cell::SetSolution(int answer)
 {
     solution = answer;
 }
 
-int Cell::getValue()
+int Cell::GetValue()
 {
     return value;
 }
 
-void Cell::setValue(int val)
+void Cell::SetValue(int val)
 {
-    value = val;
+    if (hardWired == true)
+        cout << "Cell is hard wired!" << endl;
+    else if (val < 1 || val > size)
+        cout << "Invalid cell value" << endl;
+    else
+        value = val;
 }
 
-bool Cell::getHardWired()
+bool Cell::GetHardWired()
 {
     if (hardWired == true)
         return true;
@@ -32,24 +37,24 @@ bool Cell::getHardWired()
     return false;
 }
 
-void Cell::setHardWired(bool hardWired)
+void Cell::SetHardWired(bool hardWired)
 {
     hardWired = true;
 }
 
-int * Cell::getNotes()
+int * Cell::GetNotes()
 {
     return notes;
 }
 
 // For testing purposes only
-void Cell::setNotes()
+void Cell::SetNotes()
 {
     for(int i = 0; i < 16; i++)
         notes[i] = 0;
 }
 
-void Cell::setNotesValue(int value)
+void Cell::SetNotesValue(int value)
 {
     if (notes[value-1] == 0)
         notes[value-1] = value;
@@ -58,29 +63,29 @@ void Cell::setNotesValue(int value)
 }
 
 // For testing purposes only
-void Cell::printNotes()
+void Cell::PrintNotes()
 {
     for(int i = 0; i < 16; i++)
         cout << notes[i] << " ";
     cout << endl;
 }
 
-int Cell::getRow()
+int Cell::GetRow()
 {
     return row;
 }
 
-void Cell::setRow(int r)
+void Cell::SetRow(int r)
 {
     row = r;
 }
 
-int Cell::getCol()
+int Cell::GetCol()
 {
     return col;
 }
 
-void Cell::setCol(int c)
+void Cell::SetCol(int c)
 {
     col = c;
 }
@@ -90,25 +95,25 @@ int main()
 {
     Cell cellTest;
    
-    cellTest.setNotes();
-    cellTest.setNotesValue(5);
-    cellTest.setNotesValue(1);
-    cellTest.setNotesValue(15);
+    cellTest.SetNotes();
+    cellTest.SetNotesValue(5);
+    cellTest.SetNotesValue(1);
+    cellTest.SetNotesValue(15);
 
 
-    cellTest.setSolution(6);
-    cellTest.setValue(5);
-    cellTest.setHardWired(true);
-    cellTest.setRow(4);
-    cellTest.setCol(3);
+    cellTest.SetSolution(6);
+    cellTest.SetValue(5);
+    cellTest.SetHardWired(true);
+    cellTest.SetRow(4);
+    cellTest.SetCol(3);
 
 
-    cout << cellTest.getSolution() << endl;
-    cout << cellTest.getValue() << endl;
-    cout << cellTest.getHardWired() << endl;
-    cout << cellTest.getRow() << endl;
-    cout << cellTest.getCol() << endl;
-    cellTest.printNotes();
+    cout << cellTest.GetSolution() << endl;
+    cout << cellTest.GetValue() << endl;
+    cout << cellTest.GetHardWired() << endl;
+    cout << cellTest.GetRow() << endl;
+    cout << cellTest.GetCol() << endl;
+    cellTest.PrintNotes();
 
     
     

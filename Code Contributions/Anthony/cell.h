@@ -2,25 +2,25 @@ class Cell
 {
     public:
     // Member Functions()
-    int getSolution();
-    void setSolution(int answer);
+    int GetSolution();
+    void SetSolution(int answer);
     
-    int getValue();
-    void setValue(int val);
+    int GetValue();
+    void SetValue(int val);
    
-    bool getHardWired();
-    void setHardWired(bool hardWired);
+    bool GetHardWired();
+    void SetHardWired(bool hardWired);
     
-    int * getNotes();
-    void setNotes();
-    void setNotesValue(int value);
-    void printNotes();
+    int * GetNotes();
+    void SetNotes();
+    void SetNotesValue(int value);
+    void PrintNotes();
 
-    int getRow();
-    void setRow(int r);
+    int GetRow();
+    void SetRow(int r);
 
-    int getCol();
-    void setCol(int c);
+    int GetCol();
+    void SetCol(int c);
 
     private:
     // Data  Members
