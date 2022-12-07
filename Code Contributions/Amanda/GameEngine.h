@@ -28,11 +28,14 @@ class GameEngine
         Puzzle LoadPuzzle(string puzzleName);
         // returns an array of ints of all notes in a particular cell
         int* SetNote(int row, int col);
+        
     private:
         // stores currentValue integer
         int currentValue;
-        // stores puzzle object
+        
+	// stores puzzle object
         Puzzle puzzle;
-        //stores history object
+        
+	//stores history object
         History history;
-}
+};

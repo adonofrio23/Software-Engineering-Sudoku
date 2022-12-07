@@ -35,9 +35,9 @@ bool GameEngine::SetValue(int row, int col)
     else
     {
         Cell thisCellNew = puzzle.GetCell(row, col);
-        thisCellNew.setValue(currentValue);
-        puzzle.setCell(thisCellNew);
-        bool stat = puzzle.isValid(row, col);
+        thisCellNew.SetValue(currentValue);
+        puzzle.SetCell(thisCellNew);
+        bool stat = puzzle.IsValid(row, col);
         Entry newEntry(thisCellOrig, thisCellNew, stat);
         history.PushHistory(newEntry);
         return true;
@@ -53,13 +53,7 @@ bool GameEngine::SetValue(int row, int col)
 */
 int* GameEngine::SetNote(int row, int col)
 {
-    // based off 
-    int notes[16];
-    if(puzzle.isValid(row, col))
-    {
-        Cell thisCell = puzzle.GetCell(row, col);
-        thisCell.SetNotes(notes);
-    }
-
-    return notes;
+    Cell thisCell = puzzle.GetCell(row, col);
+    thisCell.SetNotesValue(currentValue);
+    return thisCell.GetNotes();
 }
