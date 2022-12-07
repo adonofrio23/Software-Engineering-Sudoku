@@ -14,7 +14,7 @@ class Puzzle {
     //Entry Class accessible from Cell Class
     //Entry Class has a isCorrect() method
     //We will call that method
-    bool isValid(int row, int col){    // What are we checking for here???
+    bool Puzzle::isValid(int row, int col){    // What are we checking for here???
         Cell* checkCell = new Cell[row][col];
         if(checkCell.IsCorrect()){
             return true;
@@ -23,29 +23,29 @@ class Puzzle {
 
     }
 
-    void setCell(Cell cell){
+    void Puzzle::setCell(Cell cell){
         int currCellRow = cell.GetRow();
         int currCellCol = cell.GetCol();
         cells[currCellRow][currCellCol] = cell;
     }
 
-    void setSize(int sizeSet){
+    void Puzzle::setSize(int sizeSet){
         size = sizeSet;
     }
 
-    int getSize(){
+    int Puzzle::getSize(){
         return size;
     }
 
-    void setDifficulty(int diff){
+    void Puzzle::setDifficulty(int diff){
         difficulty = diff;
     }
 
-    int getDifficulty(){
+    int Puzzle::getDifficulty(){
         return difficulty;
     }
 
-    Cell getCell(int row, int col){
+    Cell Puzzle::getCell(int row, int col){
         return cells[row][col];
     }
 }
