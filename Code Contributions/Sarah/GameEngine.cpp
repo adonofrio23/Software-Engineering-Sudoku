@@ -103,7 +103,6 @@ int main() {
 
     // UndoUntilCorret with one False entry 
     // Output - one entry removed and empty history stack
-    // (make sure it loops only once)
     g.SetCurrentValue(4);
     g.SetValue(2, 2);
     g.UndoUntilCorrect();
@@ -116,21 +115,37 @@ int main() {
 
     // UndoUntilCorret with one True entry 
     // Output - no change in histroy stack
-    // test it with notes or solutions
+    int sol = p.GetCell(2, 2).GetSolution();
+    g.SetCurrentValue(sol);
+    g.SetValue(2, 2);
+    g.UndoUntilCorrect();
+    ans = p.GetCell(2, 2).GetValue();
+    if (ans == sol) {
+        cout<<"2, 2: "<<ans<<"     Test: Pass"<<endl;
+    } else {
+        cout<<ans<<"     Test: Fail"<<endl;
+    }
 
     // UndoUntilCorret with mutiple entries (FIRST - T, T, F, F - LAST)
     // Output - False entries removed in the histroy stack
-    // create True entries with notes or solutions
+    // stack already has one T
+    int sol1 = p.GetCell(2, 1).GetSolution();
+    g.SetCurrentValue(sol1);
+    g.SetValue(2, 1);
     g.SetCurrentValue(4);
     g.SetValue(2, 2);
     g.SetCurrentValue(6);
     g.SetValue(2, 2);
     ans = p.GetCell(2, 2).GetValue();
-    if (ans == 0) {
+    if (ans == sol) {
         cout<<"2, 2: "<<ans<<"    Test: Pass"<<endl;
     } else {
         cout<<ans<<"     Test: Fail"<<endl;
     }
+
+    // Two T 
+    g.Undo();
+    g.Undo();
 
     // UndoUntilCorret with mutiple entries (FIRST - F, F, F, F - LAST)
     // Output - False entries removed and empty history stack
@@ -149,8 +164,10 @@ int main() {
         cout<<ans<<"     Test: Fail"<<endl;
     }
 
-    // UndoUntilCorret with mutiple entries (FIRST - T, T, T, T - LAST)
+    // UndoUntilCorret with mutiple entries (FIRST - T, T, F, T - LAST)
     // Output - no change in histroy stack
+    // (Try with two notes, one False, and sol for same cell)
 
 }
+
 
