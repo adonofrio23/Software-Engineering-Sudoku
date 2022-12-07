@@ -1,93 +1,91 @@
 #include <iostream>
 #include <list>
-#include "cell.h"
+#include "Cell.h"
 using namespace std;
 
 // Member Functions()
 int Cell::GetSolution() 
 {
-    return solution;
+    return Cell::solution;
 }
 
 void Cell::SetSolution(int answer)
 {
-    solution = answer;
+    Cell::solution = answer;
 }
 
 int Cell::GetValue()
 {
-    return value;
+    return Cell::value;
 }
 
 void Cell::SetValue(int val)
 {
-    if (hardWired == true)
+    /*
+    if (Cell::hardWired == true)
         cout << "Cell is hard wired!" << endl;
     else if (val < 1 || val > size)
         cout << "Invalid cell value" << endl;
     else
-        value = val;
+        Cell::value = val; */
 }
 
 bool Cell::GetHardWired()
 {
-    if (hardWired == true)
-        return true;
-
-    return false;
+    return Cell::hardWired;
 }
 
 void Cell::SetHardWired(bool hardWired)
 {
-    hardWired = true;
+    Cell::hardWired = true;
 }
 
 int * Cell::GetNotes()
 {
-    return notes;
+    return Cell::notes;
 }
 
 // For testing purposes only
 void Cell::SetNotes()
 {
     for(int i = 0; i < 16; i++)
-        notes[i] = 0;
+        Cell::notes[i] = 0;
 }
 
 void Cell::SetNotesValue(int value)
 {
-    if (notes[value-1] == 0)
-        notes[value-1] = value;
+    if (Cell::notes[value-1] == 0)
+        Cell::notes[value-1] = value;
     else
-        notes[value-1] = 0;
+        Cell::notes[value-1] = 0;
 }
 
 // For testing purposes only
 void Cell::PrintNotes()
 {
     for(int i = 0; i < 16; i++)
-        cout << notes[i] << " ";
+        cout << Cell::notes[i] << " ";
     cout << endl;
 }
 
 int Cell::GetRow()
 {
-    return row;
+    return Cell::row;
 }
 
 void Cell::SetRow(int r)
 {
-    row = r;
+    Cell::row = r;
 }
 
 int Cell::GetCol()
 {
-    return col;
+    return Cell::col;
 }
 
 void Cell::SetCol(int c)
 {
-    col = c;
+    Cell::col = c;
 }
 
 // Testing Cell Object 
