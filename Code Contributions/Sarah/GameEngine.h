@@ -1,3 +1,6 @@
+#include <iostream>
+#include "Puzzle.h"
+#include "History.h"
 using namespace std;
 
 
