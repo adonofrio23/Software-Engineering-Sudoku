@@ -3,14 +3,10 @@ using namespace std;
 #include <list>
 #include <iostream>
 #include "cell.h"
-#include "entry.h"
+#include "Entry.h"
+#include "Entry.h"
 
 class Puzzle {
-
-    public:
-        std::string difficulty;
-        int size;
-        Cell* cells = new Cell[size][size];
 
 
     //We are given a row and col
@@ -18,9 +14,9 @@ class Puzzle {
     //Entry Class accessible from Cell Class
     //Entry Class has a isCorrect() method
     //We will call that method
-    bool isValid(int row, int col){
-        Cell* checkCell = new Cell[row][col]
-        if(checkCell.isCorrect()){
+    bool isValid(int row, int col){    // What are we checking for here???
+        Cell* checkCell = new Cell[row][col];
+        if(checkCell.IsCorrect()){
             return true;
         }
         return false;
@@ -28,28 +24,28 @@ class Puzzle {
     }
 
     void setCell(Cell cell){
-        currCellRow = cell.getRow()
-        currCellCol = cell.getCol()
-        cells[currCellRow][currCellCol] = cell
+        int currCellRow = cell.GetRow();
+        int currCellCol = cell.GetCol();
+        cells[currCellRow][currCellCol] = cell;
     }
 
     void setSize(int sizeSet){
-        size = sizeSet
+        size = sizeSet;
     }
 
     int getSize(){
-        return size
+        return size;
     }
 
     void setDifficulty(int diff){
-        difficulty = diff
+        difficulty = diff;
     }
 
     int getDifficulty(){
-        return difficulty
+        return difficulty;
     }
 
     Cell getCell(int row, int col){
-        return cells[row][col]
+        return cells[row][col];
     }
 }
