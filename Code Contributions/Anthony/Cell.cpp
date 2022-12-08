@@ -21,13 +21,7 @@ int Cell::GetValue()
 
 void Cell::SetValue(int val)
 {
-    /*
-    if (Cell::hardWired == true)
-        cout << "Cell is hard wired!" << endl;
-    else if (val < 1 || val > size)
-        cout << "Invalid cell value" << endl;
-    else
-        Cell::value = val; */
+    Cell::value = val; 
 }
 
 bool Cell::GetHardWired()
@@ -45,19 +39,19 @@ int * Cell::GetNotes()
     return Cell::notes;
 }
 
-// For testing purposes only
-void Cell::SetNotes()
-{
-    for(int i = 0; i < 16; i++)
-        Cell::notes[i] = 0;
-}
-
-void Cell::SetNotesValue(int value)
+void Cell::SetNotes(int value)
 {
     if (Cell::notes[value-1] == 0)
         Cell::notes[value-1] = value;
     else
         Cell::notes[value-1] = 0;
+}
+
+// For testing purposes only
+void Cell::InitializetNotes()
+{
+    for(int i = 0; i < 16; i++)
+        Cell::notes[i] = 0;
 }
 
 // For testing purposes only
@@ -93,10 +87,10 @@ int main()
 {
     Cell cellTest;
    
-    cellTest.SetNotes();
-    cellTest.SetNotesValue(5);
-    cellTest.SetNotesValue(1);
-    cellTest.SetNotesValue(15);
+    cellTest.InitializeNotes();
+    cellTest.SetNotes(5);
+    cellTest.SetNotes(1);
+    cellTest.SetNotes(15);
 
 
     cellTest.SetSolution(6);
@@ -111,8 +105,5 @@ int main()
     cout << cellTest.GetHardWired() << endl;
     cout << cellTest.GetRow() << endl;
     cout << cellTest.GetCol() << endl;
-    cellTest.PrintNotes();
-
-    
-    
+    cellTest.PrintNotes(); 
 }

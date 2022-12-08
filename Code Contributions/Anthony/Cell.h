@@ -12,8 +12,8 @@ class Cell
     void SetHardWired(bool hardWired);
     
     int * GetNotes();
-    void SetNotes();
-    void SetNotesValue(int value);
+    void SetNotes(int value);
+    void InitializetNotes();
     void PrintNotes();
 
     int GetRow();
