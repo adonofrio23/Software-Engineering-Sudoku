@@ -86,7 +86,7 @@ void Cell::SetCol(int c)
 int main()
 {
     Cell cellTest;
-   
+
     cellTest.InitializeNotes();
     cellTest.SetNotes(5);
     cellTest.SetNotes(1);
@@ -100,10 +100,12 @@ int main()
     cellTest.SetCol(3);
 
 
-    cout << cellTest.GetSolution() << endl;
-    cout << cellTest.GetValue() << endl;
-    cout << cellTest.GetHardWired() << endl;
-    cout << cellTest.GetRow() << endl;
-    cout << cellTest.GetCol() << endl;
-    cellTest.PrintNotes(); 
+    cout << newCell.GetSolution() << endl;
+    cout << newCell.GetValue() << endl;
+    cout << newCell.GetHardWired() << endl;
+    cout << newCell.GetRow() << endl;
+    cout << newCell.GetCol() << endl;
+    newCell.PrintNotes(); 
+
+    
 }
