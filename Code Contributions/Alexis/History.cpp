@@ -18,3 +18,4 @@ bool History::IsHistoryEmpty()
 {
     return history.empty();
 }
+
