@@ -2,7 +2,7 @@ using namespace std;
 #include <iostream>
 #include <list>
 #include <iostream>
-#include "cell.h"
+#include "Cell.h"
 #include "Entry.h"
 #include "Entry.h"
 
@@ -23,29 +23,29 @@ class Puzzle {
 
     }
 
-    void Puzzle::setCell(Cell cell){
+    void Puzzle::SetCell(Cell cell){
         int currCellRow = cell.GetRow();
         int currCellCol = cell.GetCol();
         cells[currCellRow][currCellCol] = cell;
     }
 
-    void Puzzle::setSize(int sizeSet){
+    void Puzzle::SetSize(int sizeSet){
         size = sizeSet;
     }
 
-    int Puzzle::getSize(){
+    int Puzzle::GetSize(){
         return size;
     }
 
-    void Puzzle::setDifficulty(int diff){
+    void Puzzle::SetDifficulty(int diff){
         difficulty = diff;
     }
 
-    int Puzzle::getDifficulty(){
+    int Puzzle::GetDifficulty(){
         return difficulty;
     }
 
-    Cell Puzzle::getCell(int row, int col){
+    Cell Puzzle::GetCell(int row, int col){
         return cells[row][col];
     }
 }
