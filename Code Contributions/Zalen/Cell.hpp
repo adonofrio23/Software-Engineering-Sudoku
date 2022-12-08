@@ -1,3 +1,4 @@
+#pragma once
 class Cell {
 public:
     Cell();
@@ -26,7 +27,7 @@ Cell::Cell(int row, int col) {
 Cell::~Cell() {
 }
 
-int Cell::GetValue(){
+int Cell::GetValue() {
     return value;
 }
 
