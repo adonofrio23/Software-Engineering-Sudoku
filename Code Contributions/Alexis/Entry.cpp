@@ -1,6 +1,6 @@
 using namespace std;
 #include<iostream>
-#include "cell.h"
+#include "Cell.h"
 #include "Entry.h"
 
 Entry::Entry(Cell* origCell, Cell* newCell, bool status)
@@ -23,4 +23,40 @@ Cell* Entry::GetOrigCell()
 Cell* Entry::GetNewCell()
 {
     return newCell;
+}
+
+/// Testing Cell Object 
+int main()
+{
+    Cell origCell;
+    Cell newCell;
+    Entry testEntry(origCell, newCell, false);
+   
+   
+    newCell.InitializeNotes();
+    newCell.SetNotes(5);
+    newCell.SetNotes(1);
+    newCell.SetNotes(15);
+
+
+    newCell.SetSolution(6);
+    newCell.SetValue(5);
+    newCell.SetHardWired(true);
+    newCell.SetRow(4);
+    newCell.SetCol(3);
+
+
+    cout << newCell.GetSolution() << endl;
+    cout << newCell.GetValue() << endl;
+    cout << newCell.GetHardWired() << endl;
+    cout << newCell.GetRow() << endl;
+    cout << newCell.GetCol() << endl;
+    newCell.PrintNotes(); 
+
+    cout << testEntry.isCorrect() << endl;
+    cout << testEntry.GetNewCell().GetSolution() << endl;
+    cout << testEntry.GetNewCell().GetValue() << endl;
+    cout << testEntry.GetNewCell().GetHardWired() << endl;
+    cout << testEntry.GetNewCell().GetRow() << endl;
+    cout << testEntry.GetNewCell().GetCol() << endl;
 }
