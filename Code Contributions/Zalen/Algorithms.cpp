@@ -29,7 +29,7 @@ bool CheckVal(Puzzle * puzzle, int row, int col) {
     	return true;
     }
 
-
+// https://www.tutorialspoint.com/sudoku-solver-in-cplusplus
 void SolveBruteForce(Puzzle* puzzle) {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
@@ -69,10 +69,3 @@ void PrintPuzzle(Puzzle* puzzle) {
     }
 }
 
-void setPuzzle(Puzzle* puzzle, int* puzzleArray) {
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) {
-            puzzle->GetCell(i, j)->SetValue(puzzleArray[i * 9 + j]);
-        }
-    }
-}

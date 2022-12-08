@@ -18,18 +18,14 @@ int EvilPuzzle[] = {   0,0,4, 5,0,1, 9,0,0,
                        0,8,0, 0,7,0, 0,6,0,
                        0,0,2, 8,0,5, 1,0,0   };
 
-
-
-
-int main()
-{
+int main() {
     Puzzle* puzzle = new Puzzle();
-    // puzzle->SetPuzzle(puzzle, EvilPuzzle);     // Create function to set array to puzzle type
+    puzzle->loadPuzzle(puzzle, EvilPuzzle);     // Create function to set array to puzzle type (I think this should be the LoadPuzzle function?)
     PrintPuzzle(puzzle);
-    std::cout << std::endl;
+    cout << endl;
     SolveBruteForce(puzzle);
     PrintPuzzle(puzzle);
-    cout << std::endl;
+    cout << endl;
     CheckPuzzle(puzzle);
  
     return 0;

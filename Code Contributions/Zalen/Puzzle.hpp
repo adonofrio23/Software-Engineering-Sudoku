@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 
@@ -9,6 +10,7 @@ public:
 	~Puzzle();
     void SetCell(Cell cell);
     Cell * GetCell(int row, int col);
+    void loadPuzzle(Puzzle* puzzle, int* puzzleArray);
 
 private:
     Cell cells[9][9];
@@ -29,4 +31,10 @@ Cell * Puzzle::GetCell(int row, int col) {
     return &cells[row][col];
 }
 
-
+void loadPuzzle(Puzzle* puzzle, int* puzzleArray) {
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            puzzle->GetCell(i, j)->SetValue(puzzleArray[i * 9 + j]);
+        }
+    }
+}
