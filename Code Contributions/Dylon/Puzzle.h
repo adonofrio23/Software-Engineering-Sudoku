@@ -1,19 +1,19 @@
+#include "Cell.h"
+
 class Puzzle{
 
-    public:
+public:
     bool isValid(int row, int col);
-    void setCell(Cell cell);
-    void setSize(int sizeSet);
-    int getSize();
-    void setDifficulty(int diff);
-    int getDifficulty();
-    Cell getCell(int row, int col);
+    void SetCell(Cell cell);
+    void SetSize(int sizeSet);
+    int GetSize();
+    void SetDifficulty(int diff);
+    int GetDifficulty();
+    Cell GetCell(int row, int col);
 
 
-    private:
+private:
     int difficulty;
     int size;
-    Cell* cells = new Cell[size][size];
-
-
+    Cell cells[9][9];
 };
