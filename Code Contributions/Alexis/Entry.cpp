@@ -1,7 +1,6 @@
-using namespace std;
 #include<iostream>
-#include "Cell.h"
 #include "Entry.h"
+using namespace std;
 
 // Constructor to create an Entry object
 Entry::Entry(Cell* origCell, Cell* newCell, bool status)
@@ -33,7 +32,7 @@ int main()
 {
     Cell origCell;
     Cell newCell;
-    Entry testEntry(origCell, newCell, false);
+    Entry testEntry(&origCell, &newCell, false);
    
    
     newCell.InitializeNotes();
@@ -56,10 +55,11 @@ int main()
     cout << newCell.GetCol() << endl;
     newCell.PrintNotes(); 
 
-    cout << testEntry.isCorrect() << endl;
-    cout << testEntry.GetNewCell().GetSolution() << endl;
-    cout << testEntry.GetNewCell().GetValue() << endl;
-    cout << testEntry.GetNewCell().GetHardWired() << endl;
-    cout << testEntry.GetNewCell().GetRow() << endl;
-    cout << testEntry.GetNewCell().GetCol() << endl;
+    cout << testEntry.IsCorrect() << endl;
+    cout << testEntry.GetNewCell()->GetSolution() << endl;
+    cout << testEntry.GetNewCell()->GetValue() << endl;
+    cout << testEntry.GetNewCell()->GetHardWired() << endl;
+    cout << testEntry.GetNewCell()->GetRow() << endl;
+    cout << testEntry.GetNewCell()->GetCol() << endl;
+    testEntry.GetNewCell()->PrintNotes(); 
 }

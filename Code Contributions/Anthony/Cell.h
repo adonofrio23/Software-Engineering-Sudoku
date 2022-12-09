@@ -13,7 +13,7 @@ class Cell
     
     int * GetNotes();
     void SetNotes(int value);
-    void InitializetNotes();
+    void InitializeNotes();
     void PrintNotes();
 
     int GetRow();

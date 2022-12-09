@@ -48,7 +48,7 @@ void Cell::SetNotes(int value)
 }
 
 // For testing purposes only
-void Cell::InitializetNotes()
+void Cell::InitializeNotes()
 {
     for(int i = 0; i < 16; i++)
         Cell::notes[i] = 0;
@@ -82,6 +82,7 @@ void Cell::SetCol(int c)
     Cell::col = c;
 }
 
+/*
 // Testing Cell Object 
 int main()
 {
@@ -100,12 +101,13 @@ int main()
     cellTest.SetCol(3);
 
 
-    cout << newCell.GetSolution() << endl;
-    cout << newCell.GetValue() << endl;
-    cout << newCell.GetHardWired() << endl;
-    cout << newCell.GetRow() << endl;
-    cout << newCell.GetCol() << endl;
-    newCell.PrintNotes(); 
+    cout << cellTest.GetSolution() << endl;
+    cout << cellTest.GetValue() << endl;
+    cout << cellTest.GetHardWired() << endl;
+    cout << cellTest.GetRow() << endl;
+    cout << cellTest.GetCol() << endl;
+    cellTest.PrintNotes(); 
 
     
 }
+*/
