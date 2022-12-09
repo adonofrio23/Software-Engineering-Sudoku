@@ -8,7 +8,7 @@ public static Cell[] FindAllEmpty(Puzzle* puzzle)
 		{
 			for(int col = 0; col < size; col++)
 			{
-				if(puzzle->GetCell(row, col) == 0)
+				if(puzzle->GetCell(row, col).GetValue() == 0)
 				{
 					emptyList[count] = puzzle->GetCell(row, col);
 					count++;
