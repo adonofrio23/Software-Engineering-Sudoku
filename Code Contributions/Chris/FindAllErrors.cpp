@@ -1,16 +1,16 @@
 public static Cell[] FindAllErrors(Puzzle* puzzle)
 {
 	Cell[] errorList = {};
-	size = puzzle->getSize();
+	size = puzzle->GetSize();
 	int count = 0;
 	
 		for(int row = 0; row < size; row++)
 		{
 			for(int col = 0; col < size; col++)
 			{
-				if(puzzle->getCell(row, col) != 0 && puzzle->getCell(row, col)->isCorrect == false)
+				if(puzzle->GetCell(row, col) != 0 && puzzle->GetCell(row, col)->IsCorrect == false)
 				{
-					errorList[count] = puzzle->getCell(row, col);
+					errorList[count] = puzzle->GetCell(row, col);
 					count++;
 				}
 			}

@@ -1,6 +1,6 @@
 using namespace std;
 #include<iostream>
-#include "cell.h"
+#include "../Anthony/Cell.h"
 
 class Entry{
     public:
@@ -15,3 +15,5 @@ class Entry{
     Cell* newCell;
    
 };
+
+

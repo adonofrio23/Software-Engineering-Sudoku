@@ -6,41 +6,42 @@
 using namespace std;
 
 
+// Undo the most recent move
 void GameEngine::Undo() {
-    // pop the latest entry in history
-    Entry entry = history.PopHistory();
-
     // check if history stack is empty
-    if (entry == NULL) {
-        return;
-    } else {
+    if (!history.IsHistoryEmpty()) {
+
+        // pop the latest entry in history
+        Entry entry = history.PopHistory();
         // set the cell back to the original cell
         puzzle.SetCell(entry.GetOrigCell());
     }
 }
 
+// Undo every move until the whole puzzle is valid/correct
 void GameEngine::UndoUntilCorrect() {
-    // pop the latest entry in history 
-    Entry tempEntry = history.PopHistory();
-
     // check if history stack is empty
-    if (tempEntry != NULL) {
+    if (!history.IsHistoryEmpty()) {
+        // pop the latest entry in history 
+        Entry tempEntry = history.PopHistory();
 
-        // if isCorrect() == false then go into while loop
+        // if isCorrect() == false then keep undoing
         while (!tempEntry.IsCorrect()) {
             // set the cell back to the original cell
             puzzle.SetCell(tempEntry.GetOrigCell());
 
-            // pop another entry from history to check 
-            tempEntry = history.PopHistory();
-            
-            if (tempEntry == NULL) {
+            // if history is empty then exit
+            if (history.IsHistoryEmpty()) {
                 return;
+            } else {
+                // if not, pop another entry from history to check 
+                tempEntry = history.PopHistory();
             }
+        
         }
+
         // if isCorrect() == true then it will push back the history and exit
         history.PushHistory(tempEntry);
-        return;
     }
 }
 

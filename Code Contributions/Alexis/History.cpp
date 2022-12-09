@@ -13,3 +13,9 @@ Entry* History::PopHistory()
     history.pop();
     return topEntry;
 }
+
+bool History::IsHistoryEmpty()
+{
+    return history.empty();
+}
+
