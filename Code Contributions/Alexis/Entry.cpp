@@ -5,8 +5,8 @@ using namespace std;
 // Constructor to create an Entry object
 Entry::Entry(Cell* origCell, Cell* newCell, bool status)
 {
-    origCell = origCell;
-    newCell = newCell;
+    this->origCell = origCell;
+    this->newCell = newCell;
     isCorrect = status;
 }
 
@@ -56,10 +56,12 @@ int main()
     newCell.PrintNotes(); 
 
     cout << testEntry.IsCorrect() << endl;
-    cout << testEntry.GetNewCell()->GetSolution() << endl;
-    cout << testEntry.GetNewCell()->GetValue() << endl;
-    cout << testEntry.GetNewCell()->GetHardWired() << endl;
-    cout << testEntry.GetNewCell()->GetRow() << endl;
-    cout << testEntry.GetNewCell()->GetCol() << endl;
-    testEntry.GetNewCell()->PrintNotes(); 
+    Cell PrintCell = *testEntry.GetNewCell();
+    int solution = PrintCell.GetSolution();
+    cout << solution << endl;
+    cout << PrintCell.GetValue() << endl;
+    cout << PrintCell.GetHardWired() << endl;
+    cout << PrintCell.GetRow() << endl;
+    cout << PrintCell.GetCol() << endl;
+    PrintCell.PrintNotes(); 
 }
