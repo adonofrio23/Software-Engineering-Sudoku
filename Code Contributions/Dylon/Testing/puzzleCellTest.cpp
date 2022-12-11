@@ -11,6 +11,7 @@ int EvilPuzzle[] = {   0,0,4, 5,0,1, 9,0,0,
                        0,8,0, 0,7,0, 0,6,0,
                        0,0,2, 8,0,5, 1,0,0   };
 
+//Function Turns matrix into Puzzle object
 void LoadGame(Puzzle* puzzle, int r, int c)
 {
     Cell cell;
@@ -30,6 +31,7 @@ void LoadGame(Puzzle* puzzle, int r, int c)
     return;
 }
 
+//Function Prints Solution of Cells
 void printPuzzle(Puzzle puzzle, int rowSize, int colSize){
 
     for(int row = 0; row < rowSize; row++){
@@ -42,6 +44,7 @@ void printPuzzle(Puzzle puzzle, int rowSize, int colSize){
     }
 }
 
+//Function Prints Cell Data
 void printCellData(Puzzle puzzle, int randomRow, int randomCol){
 
     std::cout << "" << std::endl;
@@ -51,11 +54,12 @@ void printCellData(Puzzle puzzle, int randomRow, int randomCol){
 
     std::cout << "Solution: " << curr.GetSolution() << std::endl;
     std::cout << "Value: " << curr.GetValue() << std::endl;
-    std::cout << "Is it hard wired? " << curr.GetHardWired() << std::endl;
+    std::cout << "Is it hard wired? " << curr.isHardwired() << std::endl;
     std::cout << "*****************************************************" << std::endl;
 
 }
 
+//Function picks 3 random cells to have their data printed
 void showRandomCells(Puzzle puzzle){
 
     for(int i = 0; i < 3; i++){
