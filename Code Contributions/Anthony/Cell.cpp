@@ -104,25 +104,26 @@ int main()
 {
     Cell cellTest;
 
+    // Testing cellTest Cell
     cellTest.InitializeNotes();
-    cellTest.SetNotes(5);
-    cellTest.SetNotes(1);
-    cellTest.SetNotes(15);
+    cellTest.SetNotes(6);
+    cellTest.SetNotes(7);
+    cellTest.SetNotes(2);
 
+    cellTest.SetSolution(8);
+    cellTest.SetValue(9);
+    cellTest.SetHardwired(false);
+    cellTest.SetRow(1);
+    cellTest.SetCol(8);
 
-    cellTest.SetSolution(6);
-    cellTest.SetValue(5);
-    cellTest.SetHardWired(true);
-    cellTest.SetRow(4);
-    cellTest.SetCol(3);
-
-
+    cout << "Testing Cell Test" << endl;
     cout << cellTest.GetSolution() << endl;
     cout << cellTest.GetValue() << endl;
-    cout << cellTest.GetHardWired() << endl;
+    cout << cellTest.isHardwired() << endl;
     cout << cellTest.GetRow() << endl;
     cout << cellTest.GetCol() << endl;
     cellTest.PrintNotes(); 
+    cout << endl;
 
     
 }
