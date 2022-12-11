@@ -8,8 +8,8 @@ class Cell
     int GetValue();
     void SetValue(int val);
    
-    bool GetHardWired();
-    void SetHardWired(bool hardWired);
+    bool isHardwired();
+    void SetHardwired(bool h);
     
     int * GetNotes();
     void SetNotes(int value);
@@ -26,7 +26,7 @@ class Cell
     // Data  Members
     int value;
     int notes [16];
-    bool hardWired;
+    bool hardwired;
     int solution;
     int row;
     int col;
