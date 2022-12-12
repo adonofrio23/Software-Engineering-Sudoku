@@ -1,4 +1,5 @@
 using namespace std;
+#pragma once
 #include<iostream>
 #include "../Anthony/Cell.h"
 
