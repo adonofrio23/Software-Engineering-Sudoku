@@ -4,7 +4,7 @@
 
 
 
-
+// Function prints Cell Data
 void printCellData(Puzzle puzzle, int row, int col){
 
     std::cout << "" << std::endl;
@@ -19,6 +19,7 @@ void printCellData(Puzzle puzzle, int row, int col){
 
 }
 
+// Function Iterates through Puzzle and calls printCellData
 void printData(Puzzle puzzle){
 
     for(int row = 0; row < 2; row++){

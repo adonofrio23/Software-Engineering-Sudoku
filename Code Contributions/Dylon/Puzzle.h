@@ -1,4 +1,4 @@
-#include "Cell.h"
+#include "../Anthony/Cell.h"
 
 class Puzzle{
 
@@ -6,9 +6,9 @@ public:
     bool isValid(int row, int col);
     void SetCell(Cell cell);
     void SetSize(int sizeSet);
-    int GetSize();
+    int  GetSize();
     void SetDifficulty(int diff);
-    int GetDifficulty();
+    int  GetDifficulty();
     Cell GetCell(int row, int col);
 
 
