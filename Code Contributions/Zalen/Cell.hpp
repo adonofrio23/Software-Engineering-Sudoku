@@ -1,52 +1,34 @@
 #pragma once
-class Cell {
-public:
-    Cell();
-    Cell(int row, int col);
-    ~Cell();
+class Cell
+{
+    public:
+    // Member Functions()
+    int GetSolution();
+    void SetSolution(int answer);
+    
     int GetValue();
     void SetValue(int val);
+   
+    bool isHardwired();
+    void SetHardwired(bool h);
+    
+    int * GetNotes();
+    void SetNotes(int value);
+    void InitializeNotes();
+    void PrintNotes();
+
     int GetRow();
+    void SetRow(int r);
+
     int GetCol();
-    void SetRow(int row);
-    void SetCol(int col);
-private:
+    void SetCol(int c);
+
+    private:
+    // Data  Members
     int value;
+    int notes [16];
+    bool hardwired;
+    int solution;
     int row;
     int col;
 };
-
-Cell::Cell() {
-}
-
-Cell::Cell(int row, int col) {
-    this->row = row;
-    this->col = col;
-}
-
-Cell::~Cell() {
-}
-
-int Cell::GetValue() {
-    return value;
-}
-
-void Cell::SetValue(int val) {
-    value = val;
-}
-
-int Cell::GetRow(){
-    return row;
-}
-
-int Cell::GetCol() {
-    return col;
-}
-
-void Cell::SetRow(int row) {
-    this->row = row;
-}
-
-void Cell::SetCol(int col) {
-    this->col = col;
-}

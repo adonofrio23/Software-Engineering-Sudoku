@@ -20,7 +20,7 @@ int EvilPuzzle[] = {   0,0,4, 5,0,1, 9,0,0,
 
 int main() {
     Puzzle* puzzle = new Puzzle();
-    puzzle->loadPuzzle(puzzle, EvilPuzzle);     // Create function to set array to puzzle type (I think this should be the LoadPuzzle function?)
+    puzzle->LoadPuzzle(puzzle, EvilPuzzle);     // Create function to set array to puzzle type (I think this should be the LoadPuzzle function?)
     PrintPuzzle(puzzle);
     cout << endl;
     SolveBruteForce(puzzle);

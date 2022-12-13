@@ -29,7 +29,7 @@ bool CheckVal(Puzzle * puzzle, int row, int col) {
     	return true;
     }
 
-// https://www.tutorialspoint.com/sudoku-solver-in-cplusplus
+// Reference https://www.tutorialspoint.com/sudoku-solver-in-cplusplus
 void SolveBruteForce(Puzzle* puzzle) {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
@@ -48,7 +48,7 @@ void SolveBruteForce(Puzzle* puzzle) {
 	}
 
 // CheckPuzzle checks if the puzzle is correct
-// https://www.geeksforgeeks.org/check-if-given-sudoku-board-configuration-is-valid-or-not/
+// Reference https://www.geeksforgeeks.org/check-if-given-sudoku-board-configuration-is-valid-or-not/
 
 bool CheckPuzzle(Puzzle* puzzle) {
     for (int i = 0; i < 9; i++) {
@@ -60,12 +60,5 @@ bool CheckPuzzle(Puzzle* puzzle) {
     return true;
 }
 
-void PrintPuzzle(Puzzle* puzzle) {
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) {
-            cout << puzzle->GetCell(i, j)->GetValue() << ',';
-        }
-        cout << "\n";
-    }
-}
+
 

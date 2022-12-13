@@ -4,37 +4,21 @@
 
 #include "Cell.hpp"
 
-class Puzzle {
+class Puzzle{
+
 public:
-	Puzzle();
-	~Puzzle();
+    bool isValid(int row, int col);
     void SetCell(Cell cell);
-    Cell * GetCell(int row, int col);
-    void loadPuzzle(Puzzle* puzzle, int* puzzleArray);
+    void SetSize(int sizeSet);
+    int  GetSize();
+    void SetDifficulty(int diff);
+    int  GetDifficulty();
+    Cell GetCell(int row, int col);
+    void LoadPuzzle(Puzzle* puzzle, int* puzzleArray);
+
 
 private:
+    int difficulty;
+    int size;
     Cell cells[9][9];
 };
-
-Puzzle::Puzzle() {
-}
-
-Puzzle::~Puzzle() {
-}
-
-void Puzzle::SetCell(Cell cell) {
-    Cell * c = GetCell(cell.GetRow(), cell.GetCol()); // probably will need to work with pointers here
-    c->SetValue(cell.GetValue());
-}
-
-Cell * Puzzle::GetCell(int row, int col) {
-    return &cells[row][col];
-}
-
-void loadPuzzle(Puzzle* puzzle, int* puzzleArray) {
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) {
-            puzzle->GetCell(i, j)->SetValue(puzzleArray[i * 9 + j]);
-        }
-    }
-}
