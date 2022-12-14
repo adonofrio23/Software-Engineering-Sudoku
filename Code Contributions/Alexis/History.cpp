@@ -8,6 +8,12 @@ void History::PushHistory(Entry* entry)
     history.push(entry);
 }
 
+Entry* History::TopOfStack()
+{
+    Entry* topEntry = history.top();
+    return topEntry;
+}
+
 Entry* History::PopHistory()
 {
     Entry* topEntry = history.top();
