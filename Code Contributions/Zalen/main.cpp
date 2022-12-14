@@ -49,8 +49,7 @@ void LoadPuzzle(Puzzle* puzzle, int values[])
 
 int main() {
     Puzzle* puzzle = new Puzzle();
-    int val = puzzle->GetCell(2,2)->GetValue();
-    LoadPuzzle(puzzle, EvilPuzzle);     // Create function to set array to puzzle type (I think this should be the LoadPuzzle function?)
+    LoadPuzzle(puzzle, EvilPuzzle);     
     PrintPuzzle(puzzle);
     cout << endl;
     SolveBruteForce(puzzle);

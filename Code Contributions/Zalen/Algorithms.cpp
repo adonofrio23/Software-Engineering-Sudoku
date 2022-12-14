@@ -36,7 +36,7 @@ bool SolveBruteForce(Puzzle* puzzle) {
 	for (int row = 0; row < 9; row++) {
 		for (int col = 0; col < 9; col++) {
 			Cell* cell;
-			cell = puzzle->GetCell(row, col);
+			cell = puzzle->GetCell(row, col); 
 			if (cell->GetSolution() == 0) {
 				for (int val = 1; val < 10; val++) {
 					cell->SetSolution(val);
