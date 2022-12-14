@@ -2,15 +2,18 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 //Code Stub for the FindAllErrors Algorithm
 //NOTE: No longer uses array, instead vector for full functionality
-public vector<Cell> FindAllErrors(Puzzle* puzzle)
+//Updated with class Cell as pointers from main
+public vector<Cell*> Algorithms::FindAllErrors(Puzzle* puzzle)
 {
 	//Variables
 	//errorList: Returned Value; List of type Cell that contains found errors
 	//size: Used as iterator; Puzzle size used for both row and column limits because of square puzzle
 	//count: Used as iterator in errorList; Sets location in errorList, add for each error
-	vector<Cell> errorList;
+	vector<Cell*> errorList;
 	int size = puzzle->GetSize();
 
 	//For loop for rows within the puzzle, using size
@@ -25,7 +28,7 @@ public vector<Cell> FindAllErrors(Puzzle* puzzle)
 			//2) Checks using IsValid() to determine if the puzzle cell at row and col is not correct
 			//IsValid() uses the solution and current value of the cell and returns true if correct, false if not
 			//If the returned value is false...
-			if (puzzle->GetCell(row, col).GetValue() != 0 && !puzzle->isValid(row, col))
+			if (puzzle->GetCell(row, col)->GetValue() != 0 && !puzzle->isValid(row, col))
 			{
 				//Add the Cell (not Cell value) to errorList at point count
 				//Then increment count for the next position in errorList
