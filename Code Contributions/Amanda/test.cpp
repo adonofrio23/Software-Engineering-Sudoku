@@ -162,13 +162,13 @@ int main()
         /*case 'r':
             RunTestSuite(&puzzle, &history, &engine);
             break;
-	    */
+        */
         default:
             break;
         }
 
         if (!engine.GetNotesMode()) 
-	    {
+        {
             // Pretty print the puzzle
             std::cout << "\n";
             std::cout << "||===|===|===||===|===|===||===|===|===||\n";
@@ -176,7 +176,7 @@ int main()
             std::cout << "||===|===|===||===|===|===||===|===|===||\n";
         }
         else 
-	    {
+        {
             // Pretty print notes for last cell selected
             Cell* cell = puzzle.GetCell(row, col);
             for (int i = 0; i < 9; i++) {
