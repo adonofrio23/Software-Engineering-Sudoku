@@ -1,6 +1,6 @@
 #include <iostream>
 #include <list>
-#include "Cell.h"
+#include "Cell.hpp"
 using namespace std;
 
 // Member Functions()
