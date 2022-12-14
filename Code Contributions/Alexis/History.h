@@ -7,6 +7,7 @@
 class History{
     public:
     void PushHistory(Entry* entry);
+    Entry* TopOfStack();
     Entry* PopHistory();
     bool IsHistoryEmpty();
 
