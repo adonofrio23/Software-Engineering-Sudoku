@@ -3,10 +3,7 @@ using namespace std;
 #include "Puzzle.h"
 
 
-    //This method will check value against solution in Cell
-
-    //NEED TO CONSIDER HARDWIRED!!!!!!!!!!!!!!!!
-    //IF ITS HARDWIRED, DOES VALUE STILL EQUAL SOLUTION??
+    //Function will check value against solution in Cell
     bool Puzzle::isValid(int row, int col){
         Cell* checkCell = GetCell(row,col);
         int val = checkCell->GetValue();
@@ -17,6 +14,7 @@ using namespace std;
         return false;
     }
 
+    // Function will set a cell in the puzzle
     void Puzzle::SetCell(Cell cell){
         int currCellRow = cell.GetRow();
         int currCellCol = cell.GetCol();
@@ -25,22 +23,27 @@ using namespace std;
 
     }
 
+    // Function will set the size for the puzzle
     void Puzzle::SetSize(int sizeSet){
         size = sizeSet;
     }
 
+    // Function will return the size of the puzzle
     int Puzzle::GetSize(){
         return size;
     }
 
+    // Function will set the difficulty
     void Puzzle::SetDifficulty(int diff){
         difficulty = diff;
     }
 
+    // Function will get the difficulty
     int Puzzle::GetDifficulty(){
         return difficulty;
     }
 
+    // Function will return a pointer to a cell object
     Cell* Puzzle::GetCell(int row, int col){
         return &cells[row][col];
     }
