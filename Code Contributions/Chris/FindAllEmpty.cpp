@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 //Code Stub for the FindAllEmpty Algorithm
 //NOTE: No longer uses array, instead vector for full functionality
 //Uses Cell pointers due to Cell as a pointer in main, prevents errors
