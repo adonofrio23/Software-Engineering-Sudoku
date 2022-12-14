@@ -4,15 +4,15 @@
 using namespace std;
 // CheckVal checks if the value of the cell is valid
 bool CheckVal(Puzzle * puzzle, int row, int col) {
-    	int val = puzzle->GetCell(row, col)->GetValue();
+    	int val = puzzle->GetCell(row, col).GetValue();
     	
         if (val == 0)
     		return true;
     	
         for (int i = 0; i < 9; i++) {
-    		if (i != col && puzzle->GetCell(row, i)->GetValue() == val)
+    		if (i != col && puzzle->GetCell(row, i).GetValue() == val)
     			return false;
-    		if (i != row && puzzle->GetCell(i, col)->GetValue() == val)
+    		if (i != row && puzzle->GetCell(i, col).GetValue() == val)
     			return false;
     	}
 
@@ -21,7 +21,7 @@ bool CheckVal(Puzzle * puzzle, int row, int col) {
 
     	for (int i = rowStart; i < rowStart + 3; i++) {
     		for (int j = colStart; j < colStart + 3; j++) {
-    			if (i != row && j != col && puzzle->GetCell(i, j)->GetValue() == val) {
+    			if (i != row && j != col && puzzle->GetCell(i, j).GetValue() == val) {
     				return false;
                 }
     		}
@@ -33,13 +33,13 @@ bool CheckVal(Puzzle * puzzle, int row, int col) {
 void SolveBruteForce(Puzzle* puzzle) {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				if (puzzle->GetCell(i, j)->GetValue() == 0) {
+				if (puzzle->GetCell(i, j).GetValue() == 0) {
 					for (int k = 1; k <= 9; k++) {
-						puzzle->GetCell(i, j)->SetValue(k);
+						puzzle->GetCell(i, j).SetValue(k);
 						if (CheckVal(puzzle, i, j) && CheckPuzzle(puzzle)) {
 							SolveBruteForce(puzzle);
 						}
-						puzzle->GetCell(i, j)->SetValue(0);
+						puzzle->GetCell(i, j).SetValue(0);
 					}
 				}
 			}
