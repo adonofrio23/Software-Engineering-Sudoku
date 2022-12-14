@@ -7,7 +7,7 @@ using namespace std;
 //Code Stub for the FindAllEmpty Algorithm
 //NOTE: No longer uses array, instead vector for full functionality
 //Uses Cell pointers due to Cell as a pointer in main, prevents errors
-public vector<Cell*> Algorithms::FindAllEmpty(Puzzle* puzzle)
+public vector<Cell*> FindAllEmpty(Puzzle* puzzle)
 {
 	//Variables
 	//emptyList: Returned Value; List of type Cell that contains found empty values
