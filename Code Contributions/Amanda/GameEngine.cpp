@@ -85,26 +85,26 @@ bool GameEngine::SetValue(int row, int col)
 
     if(notesMode)
     {
-	    // if in notes mode, erase value and set note
-        thisCell->SetValue(0);
-        if(thisCell->GetNotes()[currentValue - 1] == 0)
-        {
-            thisCell->SetNotes(currentValue-1, currentValue);
-        }
-        else
-        {
-            thisCell->SetNotes(currentValue-1, 0);
-        }
+	// if in notes mode, erase value and set note
+	thisCell->SetValue(0);
+	if(thisCell->GetNotes()[currentValue - 1] == 0)
+	{
+		thisCell->SetNotes(currentValue-1, currentValue);
+	}
+	else
+	{
+		thisCell->SetNotes(currentValue-1, 0);
+	}
     }
     else
     {
-        // if not in notes mode, set value and erase notes
-        thisCell->SetValue(currentValue);
-        int* notesArray = thisCell->GetNotes();
-        for(int i=0;i<16;i++)
-        {
-            notesArray[i] = 0;
-        }
+	// if not in notes mode, set value and erase notes
+	thisCell->SetValue(currentValue);
+	int* notesArray = thisCell->GetNotes();
+	for(int i=0;i<16;i++)
+	{
+		notesArray[i] = 0;
+	}
     }
 
     // set cell
@@ -119,17 +119,17 @@ bool GameEngine::SetValue(int row, int col)
     // check if history stack is empty
     if(history->IsHistoryEmpty())
     {
-        Entry* newEntry =  new Entry(origCell, thisCell, stat);
-        history->PushHistory(newEntry);	
+	Entry* newEntry =  new Entry(origCell, thisCell, stat);
+	history->PushHistory(newEntry);	
     }
     else
     {	
     	// pop from history stack to get most recent puzzle stat
     	Entry* entry = history->PopHistory();
     	// Entry* entry = history->TopOfStack();
-
-        // if puzzle is incorrect, next entry is incorrect regardless of correctness of currentValue
-        if(entry->IsCorrect())
+    
+	// if puzzle is incorrect, next entry is incorrect regardless of correctness of currentValue
+	if(entry->IsCorrect())
     	{
         	Entry* newEntry = new Entry(origCell, thisCell, stat);
         	history->PushHistory(entry);
@@ -141,7 +141,8 @@ bool GameEngine::SetValue(int row, int col)
         	history->PushHistory(newEntry);
     	}
     }
-    PrintHistoryStack();
+    // call stub for testing
+    // PrintHistoryStack();
 
     return true;
 }
@@ -175,7 +176,8 @@ void GameEngine::ToggleNotesMode()
 		// output for testing purposes
 		// cout << "You are now in notes mode" << endl;
 	}
-    return;
+
+        return;
 }
 
 //returns value of notesMode member variable
@@ -196,8 +198,8 @@ void GameEngine::PrintHistoryStack()
 		Cell* cellOrig = entry->GetOrigCell();
 		Cell* cellNew = entry->GetNewCell();
 		cout << "Original Entry: (" << cellOrig->GetRow() << ", " << cellOrig->GetCol() << "), val: " << cellOrig->GetValue()  <<  endl;
-        cout << "New Entry: (" << cellNew->GetRow() << ", " << cellOrig->GetCol() << "), val: " << cellNew->GetValue() << "\tcorrect? ";
-        if(entry->IsCorrect())
+	        cout << "New Entry: (" << cellNew->GetRow() << ", " << cellOrig->GetCol() << "), val: " << cellNew->GetValue() << "\tcorrect? ";
+	       	if(entry->IsCorrect())
 		       cout << "yes" << endl;
 		else
 			cout << "no" << endl;

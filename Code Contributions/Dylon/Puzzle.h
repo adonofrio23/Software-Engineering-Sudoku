@@ -1,4 +1,5 @@
 #include "../Anthony/Cell.h"
+#pragma once
 
 class Puzzle{
 

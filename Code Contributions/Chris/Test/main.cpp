@@ -226,9 +226,9 @@ int main() {
     }
 
     vector<Cell> error2 = alg.FindAllErrors(&puzzle);
-    cout << "------------Total Number of Wrong Values------------" << endl; //Should be 53
+    cout << "------------Total Number of Wrong Values------------" << endl; //Should be 53, 45, 40 respectively
     cout << error2.size() << endl;
-    cout << "--------Print Row, Col, and Val of Wrong Cell-------" << endl; //Should be 53
+    cout << "--------Print Row, Col, and Val of Wrong Cell-------" << endl; //Should be 53, 45, 40 respectively
     for (int g = 0; g < error2.size(); g++)
     {
         cout << "Row: " << error2.at(g).GetRow() << " Col: " << error2.at(g).GetCol() << " Val: " << error2.at(g).GetValue() << endl;

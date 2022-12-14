@@ -1,10 +1,6 @@
 #include <iostream>
-#include "Cell.h"
-#include "Puzzle.cpp"
 #include "Algorithms.h"
-#include "HelperFunctions.h"
-#include "GameEngine.h"
-#include "History.h"
+using namespace std;
 
 int EvilPuzzle[] = {   0,0,4, 5,0,1, 9,0,0,
                        0,2,0, 0,8,0, 0,3,0,
@@ -84,14 +80,14 @@ void LoadGame(Puzzle * puzzle, int r, int c, bool *b)
     Cell cell;
     cell.SetRow(r);
     cell.SetCol(c);
-    cell.SetValue(EvilPuzzle[r * 9 + c]);
+    cell.SetValue(EasyPuzzle[r * 9 + c]);
     if (cell.GetValue() != 0) {
-        cell.SetHardWired(true);
+        cell.SetHardwired(true);
         cell.SetSolution(cell.GetValue());
     }
     else {
         cell.SetSolution(0);
-        cell.SetHardWired(false);
+        cell.SetHardwired(false);
     }
     for (int i = 0; i < 9; i++) {
         cell.GetNotes()[i] = 0;
@@ -100,9 +96,26 @@ void LoadGame(Puzzle * puzzle, int r, int c, bool *b)
     return;
 }
 
+bool LoopOverPuzzle(Puzzle* puzzle, void (*func)(Puzzle*, int, int, bool*))
+{
+    bool b;
+    for (int r = 0; r < 9; r++) {
+        for (int c = 0; c < 9; c++) {
+            func(puzzle, r, c, &b);
+        }
+    }
+    return b;
+}
+
 
 int main()
 {
+    Puzzle puzzle;
+    Algorithms alg;
+    LoopOverPuzzle(&puzzle, &LoadGame);
+
+    alg.RankDifficulty(&puzzle);
+    /*
     Puzzle puzzle;
     History history;
     GameEngine engine;
@@ -210,5 +223,5 @@ int main()
             }
             std::cout << "\n";
         }
-    }
+    } */
 }

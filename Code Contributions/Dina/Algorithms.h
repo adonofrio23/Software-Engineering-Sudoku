@@ -16,6 +16,7 @@ class Algorithms {
     void PopulatePossibilities(Puzzle* puzzle);
     bool UseSingletons(Puzzle* puzzle);
     bool UseOnlyChoice(Puzzle* puzzle);
+    bool PuzzleComplete(Puzzle* puzzle);
 
 };
 
