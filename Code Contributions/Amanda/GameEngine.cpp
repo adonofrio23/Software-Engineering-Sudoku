@@ -64,7 +64,12 @@ bool GameEngine::SetValue(int row, int col)
 
     // get cell to set
     Cell* thisCell = puzzle->GetCell(row, col);
-    Cell* origCell = puzzle->GetCell(row, col);
+    // make a copy of original cell
+    Cell* origCell = new Cell();
+    origCell->SetRow(row);
+    origCell->SetCol(col);
+    origCell->SetValue(thisCell->GetValue());
+    origCell->SetSolution(thisCell->GetSolution());
 
     // check if cell is hardwired
     if(thisCell->isHardwired())
@@ -72,47 +77,64 @@ bool GameEngine::SetValue(int row, int col)
 	    cout << "Invalid cell!" << endl;
 	    return false;
     }
-    
+    origCell->SetHardwired(false);
+
     if(notesMode)
     {
-	    // if in notes mode, erase value and set note
-	    thisCell->SetValue(0);
-	    SetNote(row, col);
+        // if in notes mode, erase value and set note
+        thisCell->SetValue(0);
+        if(thisCell->GetNotes()[currentValue - 1] == 0)
+        {
+            thisCell->SetNotes(currentValue-1, currentValue);
+        }
+        else
+        {
+            thisCell->SetNotes(currentValue-1, 0);
+        }
     }
     else
     {
-	    // if not in notes mode, set value and erase notes
-	    thisCell->SetValue(currentValue);
-	    int* notesArray = thisCell->GetNotes();
-	    for(int i=0;i<16;i++)
+        // if not in notes mode, set value and erase notes
+        thisCell->SetValue(currentValue);
+        int* notesArray = thisCell->GetNotes();
+        for(int i=0;i<16;i++)
         {
             notesArray[i] = 0;
         }
     }
 
     puzzle->SetCell(*thisCell);
-    //check values of pointer to cell objects
+    //check
     cout << "Original Cell value: " << origCell->GetValue() << endl;
     cout << "New Cell value: " << thisCell->GetValue() << endl;
-        /*thisCellNew->SetValue(currentValue);
-        puzzle->SetCell(*thisCellNew);
-        //bool stat = puzzle->isValid(row, col);
-        Entry* entry = history->PopHistory();
-        if(entry->IsCorrect())
-        {
-            Entry* newEntry = new Entry(thisCellOrig, thisCellNew, stat);
-            history->PushHistory(entry);
-            history->PushHistory(newEntry);
-	}
-        else{
-            Entry* newEntry =  new Entry(thisCellOrig, thisCellNew, false);
-            history->PushHistory(entry);
-            history->PushHistory(newEntry);
-	}
-	
-        return true;
+    
+    // get if cell is valid
+    bool stat = puzzle->isValid(row, col);
+    
+    if(history->IsHistoryEmpty())
+    {
+        Entry* newEntry =  new Entry(origCell, thisCell, stat);
+        history->PushHistory(newEntry);	
     }
-    */
+    else
+    {	
+    	// pop from history stack to get most recent puzzle stat
+    	Entry* entry = history->PopHistory();
+    	//Entry* entry = history->TopOfStack();
+    
+	    if(entry->IsCorrect())
+    	{
+        	Entry* newEntry = new Entry(origCell, thisCell, stat);
+        	history->PushHistory(entry);
+        	history->PushHistory(newEntry);
+    	}
+    	else{
+        	Entry* newEntry= new Entry(origCell, thisCell, false);
+        	history->PushHistory(entry);
+        	history->PushHistory(newEntry);
+    	}
+    }
+
     return true;
 }
 
@@ -125,7 +147,7 @@ bool GameEngine::SetValue(int row, int col)
 int* GameEngine::SetNote(int row, int col)
 {
     Cell* thisCell = puzzle->GetCell(row, col);
-    thisCell->SetNotes(currentValue);
+    thisCell->SetNotes(currentValue-1, currentValue);
     return thisCell->GetNotes();
 }
 
@@ -142,6 +164,7 @@ void GameEngine::ToggleNotesMode()
 		notesMode = true;
 		cout << "You are now in notes mode" << endl;
 	}
+
     return;
 }
 

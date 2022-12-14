@@ -9,7 +9,7 @@
 class GameEngine
 {
     public:
-	    // constructor
+	// constructor
         GameEngine(Puzzle* p, History* h);
         // sets current value using parameter val, returns void
         void SetCurrentValue(int val);
