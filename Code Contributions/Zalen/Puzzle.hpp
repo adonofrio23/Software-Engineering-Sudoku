@@ -13,8 +13,8 @@ public:
     int  GetSize();
     void SetDifficulty(int diff);
     int  GetDifficulty();
-    Cell GetCell(int row, int col);
-    void LoadPuzzle(Puzzle* puzzle, int* puzzleArray);
+    Cell * GetCell(int row, int col);
+    // void LoadPuzzle(Puzzle* puzzle, int* puzzleArray);
 
 
 private:

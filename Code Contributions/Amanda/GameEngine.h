@@ -9,7 +9,7 @@
 class GameEngine
 {
     public:
-        // constructor
+	// constructor
         GameEngine(Puzzle* p, History* h);
         // sets current value using parameter val, returns void
         void SetCurrentValue(int val);
@@ -17,16 +17,15 @@ class GameEngine
         int GetCurrentValue();
         // sets the value of a particular cell, returns true if successful, false if not
         bool SetValue(int row, int col);
-        //void Undo();
-        //void UndoUntilCorrect();
+        void Undo();
+        void UndoUntilCorrect();
         int* SetNote(int row, int col);
         void ToggleNotesMode(); 
     	bool GetNotesMode();
         void PrintHistoryStack();
-        
     private:
         int currentValue;
         Puzzle* puzzle;
         History* history;
-        bool notesMode;
+	bool notesMode;
 };

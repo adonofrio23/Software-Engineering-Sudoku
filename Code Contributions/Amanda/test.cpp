@@ -130,18 +130,18 @@ int main()
     char command;
     int row = 0, col = 0;
     while (!done) {
-        cout << "Command: (u)ndo, (U)ndo until correct, Set current (v)alue, (s)et cell, (h)int specific, (H)int random, (n)ote mode toggle, (l)oad puzzle,(r)un test suite, (q)uit: ";
+        cout << "Command: (u)ndo, (U)ndo until correct, Set current (v)alue, (s)et cell, (n)ote mode toggle, (q)uit: ";
         std::cin >> command;
         switch (command) {
         case 'q':
             done = true;
             break;
-        //case 'u':
-        //  engine.UndoLastMove();
-        //  break;
-        //case 'U':
-        //    engine.UndoUntilCorrect();
-        //    break;
+        case 'u':
+          engine.Undo();
+          break;
+        case 'U':
+            engine.UndoUntilCorrect();
+            break;
         case 'v':
             cout << "Enter value: ";
             int val;
@@ -162,13 +162,13 @@ int main()
         /*case 'r':
             RunTestSuite(&puzzle, &history, &engine);
             break;
-        */
+	 */
         default:
             break;
         }
 
         if (!engine.GetNotesMode()) 
-        {
+	{
             // Pretty print the puzzle
             std::cout << "\n";
             std::cout << "||===|===|===||===|===|===||===|===|===||\n";
@@ -176,7 +176,7 @@ int main()
             std::cout << "||===|===|===||===|===|===||===|===|===||\n";
         }
         else 
-        {
+	{
             // Pretty print notes for last cell selected
             Cell* cell = puzzle.GetCell(row, col);
             for (int i = 0; i < 9; i++) {
