@@ -38,6 +38,6 @@ using namespace std;
         return difficulty;
     }
 
-    Cell Puzzle::GetCell(int row, int col){
-        return cells[row][col];
+    Cell* Puzzle::GetCell(int row, int col){
+        return &cells[row][col];
     }
