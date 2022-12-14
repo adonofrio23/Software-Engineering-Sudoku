@@ -122,8 +122,71 @@ int main() {
 
 
     g.SetUp(&puzzle, &history);
+
+    // Test setting a value in puzzle cell
+
+    // Set an illegal value to a legal location
+    g.SetCurrentValue(40);
+    g.SetValue(4, 50);
+
+    for (int i = 0; i < rowSize; i++)
+    {
+        for (int j = 0; j < colSize; j++)
+        {
+            PrintGame(&puzzle, i, j);
+        }
+    }
+
+    // Set a legal value to an illegal location
+    g.SetCurrentValue(3);
+    g.SetValue(3, 15);
+
+    for (int i = 0; i < rowSize; i++)
+    {
+        for (int j = 0; j < colSize; j++)
+        {
+            PrintGame(&puzzle, i, j);
+        }
+    }
+
+    // Set a legal value to a legal location
+    g.SetCurrentValue(3);
+    g.SetValue(0, 0);
+
+    for (int i = 0; i < rowSize; i++)
+    {
+        for (int j = 0; j < colSize; j++)
+        {
+            PrintGame(&puzzle, i, j);
+        }
+    }
+
+    // Set a legal value to a hard-wired location
+    g.SetCurrentValue(5);
+    g.SetValue(0, 2);
+
+    for (int i = 0; i < rowSize; i++)
+    {
+        for (int j = 0; j < colSize; j++)
+        {
+            PrintGame(&puzzle, i, j);
+        }
+    }
     
-    // Test Undo()
+    // Test for setting a note in a puzzle cell
+
+    // Set an illegal note to a legal location
+
+    // Set a legal note to a legal location
+
+    // Set a legal note to a hard-wired location
+
+    // Add a note to a cell with existing note
+
+
+
+    // Test for undoing moves
+
     // Undo with entry == NULL
     // Output - no change and empty history stack
     // g.Undo();
@@ -132,11 +195,11 @@ int main() {
 
     // Undo with one existing entry - value
     // Output - most recent entry in history removed and empty history stack
-    int orig = puzzle.GetCell(0, 0)->GetValue();
-    cout<<"orig "<<orig<<endl;
+    // int orig = puzzle.GetCell(0, 0)->GetValue();
+    // cout<<"orig "<<orig<<endl;
 
-    g.SetCurrentValue(5);
-    g.SetValue(0, 0);
+    // g.SetCurrentValue(5);
+    // g.SetValue(0, 0);
 
     // for (int i = 0; i < rowSize; i++)
     // {
@@ -146,13 +209,13 @@ int main() {
     //     }
     // }
 
-    int ans = puzzle.GetCell(0, 0)->GetValue();
-    cout<<"ans "<<ans<<endl;
+    // int ans = puzzle.GetCell(0, 0)->GetValue();
+    // cout<<"ans "<<ans<<endl;
 
-    g.Undo();
+    // g.Undo();
 
-    int newv = puzzle.GetCell(0, 0)->GetValue();
-    cout<<"newv "<<ans<<endl;
+    // int newv = puzzle.GetCell(0, 0)->GetValue();
+    // cout<<"newv "<<ans<<endl;
 
     // if (ans == 0) {
     //     cout<<"0, 0: "<<ans<<"     Test: Pass"<<endl;
