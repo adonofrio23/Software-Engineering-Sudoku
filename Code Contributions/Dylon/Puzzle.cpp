@@ -4,10 +4,13 @@ using namespace std;
 
 
     //This method will check value against solution in Cell
+
+    //NEED TO CONSIDER HARDWIRED!!!!!!!!!!!!!!!!
+    //IF ITS HARDWIRED, DOES VALUE STILL EQUAL SOLUTION??
     bool Puzzle::isValid(int row, int col){
-        Cell checkCell = GetCell(row,col);
-        int val = checkCell.GetValue();
-        int sol = checkCell.GetSolution();
+        Cell* checkCell = GetCell(row,col);
+        int val = checkCell->GetValue();
+        int sol = checkCell->GetSolution();
         if(val == sol){
             return true;
         }
