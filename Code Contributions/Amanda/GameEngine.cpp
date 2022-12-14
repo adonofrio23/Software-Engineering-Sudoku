@@ -142,8 +142,7 @@ void GameEngine::ToggleNotesMode()
 		notesMode = true;
 		cout << "You are now in notes mode" << endl;
 	}
-
-        return;
+    return;
 }
 
 bool GameEngine::GetNotesMode()

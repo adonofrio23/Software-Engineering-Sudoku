@@ -131,7 +131,7 @@ int main()
     int row = 0, col = 0;
     while (!done) 
     {
-        cout << "Command: (u)ndo, (U)ndo until correct, Set current (v)alue, (s)et cell, (h)int specific, (H)int random, (n)ote mode toggle, (l)oad puzzle,(r)un test suite, (q)uit: ";
+        cout << "Command: Set current (v)alue, (s)et cell, (n)ote mode toggle, (q)uit: ";
         std::cin >> command;
         switch (command) 
         {
