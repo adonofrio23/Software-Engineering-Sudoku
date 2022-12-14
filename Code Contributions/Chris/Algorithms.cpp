@@ -47,7 +47,6 @@ vector<Cell> Algorithms::FindAllErrors(Puzzle* puzzle)
 	//count: Used as iterator in emptyList; Sets location in emptyList, add for each found empty value
 	vector<Cell> emptyList;
 	int size = puzzle->GetSize();
-	cout << puzzle->GetSize() << endl;
 	//For loop for rows within the puzzle, using size
 	for (int row = 0; row < size; row++)
 	{
