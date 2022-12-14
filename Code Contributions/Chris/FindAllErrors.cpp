@@ -7,7 +7,7 @@ using namespace std;
 //Code Stub for the FindAllErrors Algorithm
 //NOTE: No longer uses array, instead vector for full functionality
 //Updated with class Cell as pointers from main
-public vector<Cell*> Algorithms::FindAllErrors(Puzzle* puzzle)
+public vector<Cell*> FindAllErrors(Puzzle* puzzle)
 {
 	//Variables
 	//errorList: Returned Value; List of type Cell that contains found errors
