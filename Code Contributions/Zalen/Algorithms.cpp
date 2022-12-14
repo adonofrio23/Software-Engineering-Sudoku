@@ -31,7 +31,7 @@ bool CheckVal(Puzzle * puzzle, int row, int col) {
     	return true;
     }
 
-// Reference https://www.tutorialspoint.com/sudoku-solver-in-cplusplus
+// Reference https://www.tutorialspoint.com/sudoku-solver-in-cplusplus 
 bool SolveBruteForce(Puzzle* puzzle) {
 	for (int row = 0; row < 9; row++) {
 		for (int col = 0; col < 9; col++) {

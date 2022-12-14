@@ -11,7 +11,7 @@ int Cell::GetSolution()
     return Cell::solution;
 }
 
-// Function that sets the solution value of a cell
+// Function that sets the solution value of a cell 
 void Cell::SetSolution(int answer)
 {
     Cell::solution = answer;

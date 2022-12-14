@@ -13,7 +13,7 @@ class Cell
     void SetHardwired(bool h);
     
     int * GetNotes();
-    void SetNotes(int value);
+    void SetNotes(int value); 
     void InitializeNotes();
     void PrintNotes();
 
