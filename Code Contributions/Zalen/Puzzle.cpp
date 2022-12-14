@@ -1,10 +1,10 @@
-#include "Puzzle.h"
+#include "Puzzle.hpp"
 using namespace std;
     //This method will check value against solution in Cell
     bool Puzzle::isValid(int row, int col){
-        Cell checkCell = GetCell(row,col);
-        int val = checkCell.GetValue();
-        int sol = checkCell.GetSolution();
+        Cell * checkCell = GetCell(row,col);
+        int val = checkCell->GetValue();
+        int sol = checkCell->GetSolution();
         if(val == sol){
             return true;
         }
@@ -35,14 +35,7 @@ using namespace std;
         return difficulty;
     }
 
-    Cell Puzzle::GetCell(int row, int col){
-        return cells[row][col];
+    Cell * Puzzle::GetCell(int row, int col){
+        return &cells[row][col];
     }
 
-    void LoadPuzzle(Puzzle* puzzle, int* puzzleArray) {
-	for (int i = 0; i < 9; i++) {
-		for (int j = 0; j < 9; j++) {
-            puzzle->GetCell(i, j).SetValue(puzzleArray[i * 9 + j]);
-		}
-	}
-}
