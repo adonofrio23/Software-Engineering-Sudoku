@@ -129,47 +129,46 @@ int main()
     bool done = false;
     char command;
     int row = 0, col = 0;
-    while (!done) 
-    {
-        cout << "Command: Set current (v)alue, (s)et cell, (n)ote mode toggle, (q)uit: ";
+    while (!done) {
+        cout << "Command: (u)ndo, (U)ndo until correct, Set current (v)alue, (s)et cell, (h)int specific, (H)int random, (n)ote mode toggle, (l)oad puzzle,(r)un test suite, (q)uit: ";
         std::cin >> command;
-        switch (command) 
-        {
-            case 'q':
-                done = true;
-                break;
-            //case 'u':
-            //  engine.UndoLastMove();
-            //  break;
-            //case 'U':
-            //    engine.UndoUntilCorrect();
-            //    break;
-            case 'v':
-                cout << "Enter value: ";
-                int val;
-                cin >> val;
-                engine.SetCurrentValue(val);
-                //cout << engine.GetCurrentValue();
-                break;
-            case 's':
-                cout << "Enter row: ";
-                cin >> row;
-                cout << "Enter column: ";
-                cin >> col;
-                engine.SetValue(row, col);
-                break;
-            case 'n':
-                engine.ToggleNotesMode();
-                break;
-            /*case 'r':
-                RunTestSuite(&puzzle, &history, &engine);
-                break;
-            */
-            default:
-                break;
+        switch (command) {
+        case 'q':
+            done = true;
+            break;
+        //case 'u':
+        //  engine.UndoLastMove();
+        //  break;
+        //case 'U':
+        //    engine.UndoUntilCorrect();
+        //    break;
+        case 'v':
+            cout << "Enter value: ";
+            int val;
+            cin >> val;
+            engine.SetCurrentValue(val);
+            //cout << engine.GetCurrentValue();
+	    break;
+        case 's':
+            cout << "Enter row: ";
+            cin >> row;
+            cout << "Enter column: ";
+            cin >> col;
+            engine.SetValue(row, col);
+            break;
+        case 'n':
+            engine.ToggleNotesMode();
+            break;
+        /*case 'r':
+            RunTestSuite(&puzzle, &history, &engine);
+            break;
+        */
+        default:
+            break;
         }
+
         if (!engine.GetNotesMode()) 
-	    {
+        {
             // Pretty print the puzzle
             std::cout << "\n";
             std::cout << "||===|===|===||===|===|===||===|===|===||\n";
@@ -177,11 +176,10 @@ int main()
             std::cout << "||===|===|===||===|===|===||===|===|===||\n";
         }
         else 
-	    {
+        {
             // Pretty print notes for last cell selected
             Cell* cell = puzzle.GetCell(row, col);
-            for (int i = 0; i < 9; i++) 
-            {
+            for (int i = 0; i < 9; i++) {
                 std::cout << cell->GetNotes()[i];
                 if (i != 8) std::cout << ", ";
             }

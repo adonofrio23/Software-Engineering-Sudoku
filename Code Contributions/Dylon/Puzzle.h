@@ -9,7 +9,7 @@ public:
     int  GetSize();
     void SetDifficulty(int diff);
     int  GetDifficulty();
-    Cell GetCell(int row, int col);
+    Cell* GetCell(int row, int col);
 
 
 private:
