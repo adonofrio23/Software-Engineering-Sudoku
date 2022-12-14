@@ -12,24 +12,24 @@ using namespace std;
 
 bool Algorithms:: CheckVal(Puzzle * puzzle, int row, int col)
 {
-    int solution = puzzle->GetCell(row, col).GetSolution();
+    int solution = puzzle->GetCell(row, col)->GetSolution();
     // Check for duplicate in row
     for (int c = 0; c < 9; c++) {
         if (c != col) {
-            if (puzzle->GetCell(row, c).GetSolution() == solution) return false;
+            if (puzzle->GetCell(row, c)->GetSolution() == solution) return false;
         }
     }
     // Check for duplicate in col
     for (int r = 0; r < 9; r++) {
         if (r != row) {
-            if (puzzle->GetCell(r, col).GetSolution() == solution) return false;
+            if (puzzle->GetCell(r, col)->GetSolution() == solution) return false;
         }
     }
     // Check for duplicate in group
     for (int r = row/3*3; r < (row/3*3+3); r++) {
         for (int c = col/3*3; c < (col/3*3+3); c++) {
             if ((r != row) || (c != col)) {
-                if (puzzle->GetCell(r, c).GetSolution() == solution) return false;
+                if (puzzle->GetCell(r, c)->GetSolution() == solution) return false;
             }
         }
     }
@@ -40,17 +40,17 @@ bool Algorithms:: SolveBruteForce(Puzzle* puzzle)
 {
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
-            Cell cell;
+            Cell* cell;
             cell = puzzle->GetCell(row, col);
-            if (cell.GetSolution() == 0) {
+            if (cell->GetSolution() == 0) {
                 for (int val = 1; val < 10; val++) {
-                    cell.SetSolution(val);
+                    cell->SetSolution(val);
                     if (CheckVal(puzzle, row, col)) {
                         if ((row == 8) && (col == 8)) { return true; }
                         if (SolveBruteForce(puzzle)) { return true; }
                     }
                 }
-                cell.SetSolution(0);
+                cell->SetSolution(0);
                 return false;
             }
         }
@@ -68,20 +68,20 @@ void Algorithms:: PopulatePossibilities(Puzzle* puzzle) {
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
             for (int i = 1; i < 10; i++) {
-                puzzle->GetCell(row, col).SetNotes(i-1);
+                puzzle->GetCell(row, col)->SetNotes(i-1, 0);
             }
         }
     }
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
-            if (puzzle->GetCell(row, col).GetSolution() == 0) {
+            if (puzzle->GetCell(row, col)->GetSolution() == 0) {
                 for (int i = 1; i < 10; i++) {
-                    puzzle->GetCell(row, col).SetSolution(i);
+                    puzzle->GetCell(row, col)->SetSolution(i);
                     if (CheckVal(puzzle, row, col)) {
-                        puzzle->GetCell(row,col).SetNotes(i-1);
+                        puzzle->GetCell(row,col)->SetNotes(i-1, i);
                     }
                 }
-                puzzle->GetCell(row, col).SetSolution(0);
+                puzzle->GetCell(row, col)->SetSolution(0);
             }
         }
     }
@@ -100,13 +100,13 @@ bool Algorithms:: UseSingletons(Puzzle* puzzle) {
             int numberOfNotes = 0;
             int noteIndex;
             for (int i = 0; i < 9; i++) {
-                if (puzzle->GetCell(row, col).GetNotes()[i] != 0) {
+                if (puzzle->GetCell(row, col)->GetNotes()[i] != 0) {
                     numberOfNotes++;
                     noteIndex = i;
                 }
             }
             if (numberOfNotes == 1) {
-                puzzle->GetCell(row, col).SetSolution(noteIndex + 1);
+                puzzle->GetCell(row, col)->SetSolution(noteIndex + 1);
                 modified = true;
             }
         }
@@ -130,7 +130,7 @@ bool Algorithms::UseOnlyChoice(Puzzle* puzzle) {
             bool found = false;
             for (int col = 0; col < 9; col++)
             {
-                if (puzzle->GetCell(row, col).GetNotes()[val - 1] == val) {
+                if (puzzle->GetCell(row, col)->GetNotes()[val - 1] == val) {
                     if (found) {
                         found = false;
                         break;
@@ -141,7 +141,7 @@ bool Algorithms::UseOnlyChoice(Puzzle* puzzle) {
                 }
             }
             if (found) {
-                puzzle->GetCell(tempRow, tempCol).SetSolution(val);
+                puzzle->GetCell(tempRow, tempCol)->SetSolution(val);
                 modified = true;
             }
         }
@@ -152,7 +152,7 @@ bool Algorithms::UseOnlyChoice(Puzzle* puzzle) {
             bool found = false;
             for (int row = 0; row < 9; row++)
             {
-                if (puzzle->GetCell(row, col).GetNotes()[val - 1] == val) {
+                if (puzzle->GetCell(row, col)->GetNotes()[val - 1] == val) {
                     if (found) {
                         found = false;
                         break;
@@ -163,7 +163,7 @@ bool Algorithms::UseOnlyChoice(Puzzle* puzzle) {
                 }
             }
             if (found) {
-                puzzle->GetCell(tempRow, tempCol).SetSolution(val);
+                puzzle->GetCell(tempRow, tempCol)->SetSolution(val);
                 modified = true;
             }
         }
@@ -175,7 +175,7 @@ bool Algorithms::UseOnlyChoice(Puzzle* puzzle) {
                 int found = 0;
                 for (int row = groupRow * 3; row < (groupRow * 3 + 3); row++) {
                     for (int col = groupCol * 3; col < (groupCol * 3 + 3); col++) {
-                        if (puzzle->GetCell(row, col).GetNotes()[val - 1] == val) {
+                        if (puzzle->GetCell(row, col)->GetNotes()[val - 1] == val) {
                             found++;
                             tempRow = row;
                             tempCol = col;
@@ -183,7 +183,7 @@ bool Algorithms::UseOnlyChoice(Puzzle* puzzle) {
                     }
                 }
                 if (found == 1) {
-                    puzzle->GetCell(tempRow, tempCol).SetSolution(val);
+                    puzzle->GetCell(tempRow, tempCol)->SetSolution(val);
                     modified = true;
                 }
             }
@@ -195,9 +195,9 @@ bool Algorithms::UseOnlyChoice(Puzzle* puzzle) {
 bool Algorithms::CheckPuzzle(Puzzle* puzzle) {
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
-            Cell cell;
+            Cell* cell;
             cell = puzzle->GetCell(row, col);
-            if ((cell.GetSolution() != cell.GetValue()) && (cell.GetValue() != 0)) {
+            if ((cell->GetSolution() != cell->GetValue()) && (cell->GetValue() != 0)) {
                 return false;
             }
         }
@@ -222,6 +222,7 @@ int Algorithms:: RankDifficulty (Puzzle* puzzle) {
 //quadrant size.
 
 //fill notes
+// Put these in a loop
     PopulatePossibilities(puzzle);
     UseOnlyChoice(puzzle);
 
@@ -231,8 +232,6 @@ int Algorithms:: RankDifficulty (Puzzle* puzzle) {
         rank=1;
         cout << "Rank = " << rank << endl;
     } else {
-        // How do we get the row and column values here for CheckVal? Is a for loop or while loop needed?
-        CheckVal(puzzle);
         UseSingletons(puzzle);
         if (CheckPuzzle(puzzle) == true) {
             rank = 2;

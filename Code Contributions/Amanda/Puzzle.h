@@ -1,4 +1,5 @@
 #include "../Anthony/Cell.h"
+#pragma once
 
 class Puzzle{
 
@@ -9,6 +10,7 @@ public:
     int  GetSize();
     void SetDifficulty(int diff);
     int  GetDifficulty();
+    // returns pointer to a cell object
     Cell* GetCell(int row, int col);
 
 

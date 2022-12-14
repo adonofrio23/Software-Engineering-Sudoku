@@ -1,14 +1,13 @@
 using namespace std;
 
 #include "Puzzle.h"
-
+#include "../Anthony/Cell.h"
 
     //This method will check value against solution in Cell
-
-    //NEED TO CONSIDER HARDWIRED!!!!!!!!!!!!!!!!
-    //IF ITS HARDWIRED, DOES VALUE STILL EQUAL SOLUTION??
     bool Puzzle::isValid(int row, int col){
+        // get cell now returns a pointer to a cell object
         Cell* checkCell = GetCell(row,col);
+        // cell member functions called with -> operator
         int val = checkCell->GetValue();
         int sol = checkCell->GetSolution();
         if(val == sol){
@@ -41,6 +40,9 @@ using namespace std;
         return difficulty;
     }
 
+    // now returns a pointer to a cell object
     Cell* Puzzle::GetCell(int row, int col){
-        return &cells[row][col];
+        // return the address of this cell 
+	    return &cells[row][col];
     }
+

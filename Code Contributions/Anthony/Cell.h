@@ -1,3 +1,5 @@
+#pragma once 
+
 class Cell
 {
     public:
@@ -12,7 +14,7 @@ class Cell
     void SetHardwired(bool h);
     
     int * GetNotes();
-    void SetNotes(int value);
+    void SetNotes(int index, int value);
     void InitializeNotes();
     void PrintNotes();
 

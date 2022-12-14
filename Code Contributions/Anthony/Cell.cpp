@@ -51,12 +51,13 @@ int * Cell::GetNotes()
 }
 
 // Function that adds or removes the inputted value to the integer array of notes for a cell
-void Cell::SetNotes(int value)
+// High level this is what you want
+// At a lower level we need to be able to explicity set notes to a certain value
+// Could do SetNotes(index, value)
+// Anything about playing the game happens at Game Engine
+void Cell::SetNotes(int index, int value)
 {
-    if (Cell::notes[value-1] == 0)
-        Cell::notes[value-1] = value;
-    else
-        Cell::notes[value-1] = 0;
+    Cell::notes[index] = value;
 }
 
 // For testing purposes only. Initializes the integer array of notes for a cell to all 0s.
