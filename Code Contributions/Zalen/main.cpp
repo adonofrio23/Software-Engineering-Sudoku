@@ -46,36 +46,6 @@ void LoadPuzzle(Puzzle* puzzle, int values[])
 }
 
 
-//LoopOverPuzzle(&puzzle, &PrintSolution);
-//
-
-// void PrintPuzzle(Puzzle* puzzle)
-// {
-//     std::cout << "\n";
-//     std::cout << "||===|===|===||===|===|===||===|===|===||\n";
-//     for (int r = 0; r < 9; r++) {
-//         for (int c = 0; c < 9; c++) {
-
-//             int v = puzzle->GetCell(r, c)->GetSolution();
-//             if ((c == 0) || (c == 3) || (c == 6)) {
-//                 std::cout << "||";
-//                 if (v != 0) std::cout << ' ' << v << ' ';
-//                 else std::cout << "   ";
-//             }
-//             else {
-//                 std::cout << "|";
-//                 if (v != 0) std::cout << ' ' << v << ' ';
-//                 else std::cout << "   ";
-//             }
-//             if (c == 8) {
-//                 std::cout << "||\n";
-//                 if ((r == 2) || (r == 5)) std::cout << "||===|===|===||===|===|===||===|===|===||\n";
-//                 else if (r != 8) std::cout << "||---|---|---||---|---|---||---|---|---||\n";
-//             }
-//         }
-//     }
-//     std::cout << "||===|===|===||===|===|===||===|===|===||\n";
-// }
 
 int main() {
     Puzzle* puzzle = new Puzzle();
