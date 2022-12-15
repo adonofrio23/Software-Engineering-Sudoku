@@ -19,8 +19,8 @@ class Algorithms {
     bool UseOnlyChoice(Puzzle* puzzle);
     bool PuzzleComplete(Puzzle* puzzle);
     void PrintPuzzle(Puzzle* puzzle);
-    std::vector<Cell> FindAllErrors(Puzzle* puzzle);
-	std::vector<Cell> FindAllEmpty(Puzzle* puzzle);
+    std::vector<Cell*> FindAllErrors(Puzzle* puzzle);
+    std::vector<Cell*> FindAllEmpty(Puzzle* puzzle);
 
 };
 
