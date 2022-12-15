@@ -1,4 +1,4 @@
-#include "..Dina/Algorithms.h"
+#include "../Dina/Algorithms.h"
 
 #include <iostream>
 using namespace std;
