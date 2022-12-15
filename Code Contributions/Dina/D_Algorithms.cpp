@@ -247,5 +247,6 @@ int Algorithms:: RankDifficulty (Puzzle* puzzle) {
         }
     }
     cout<<"Rank = "<< rank << endl;
+    return rank;
 }
 
