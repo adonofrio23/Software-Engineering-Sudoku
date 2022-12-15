@@ -16,5 +16,5 @@ public:
 private:
     int difficulty;
     int size;
-    Cell cells[9][9];
+    Cell cells[16][16];
 };
