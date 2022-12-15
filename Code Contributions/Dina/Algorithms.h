@@ -3,6 +3,7 @@
 
 #pragma once
 #include "../Dylon/Puzzle.h"
+#include <vector>
 
 
 class Algorithms {
@@ -17,6 +18,9 @@ class Algorithms {
     bool UseSingletons(Puzzle* puzzle);
     bool UseOnlyChoice(Puzzle* puzzle);
     bool PuzzleComplete(Puzzle* puzzle);
+    void PrintPuzzle(Puzzle* puzzle);
+    std::vector<Cell> FindAllErrors(Puzzle* puzzle);
+	std::vector<Cell> FindAllEmpty(Puzzle* puzzle);
 
 };
 
