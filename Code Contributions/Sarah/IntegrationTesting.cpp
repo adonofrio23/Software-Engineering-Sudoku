@@ -22,46 +22,12 @@ int EvilPuzzle[] = {   0,0,4, 5,0,1, 9,0,0,
                        0,8,0, 0,7,0, 0,6,0,
                        0,0,2, 8,0,5, 1,0,0   };
 
-// int EvilPuzzle[] = { 0,7,9, 0,4,0, 5,0,0,
-//                        1,8,0, 3,5,0, 0,0,0,
-//                        0,0,0, 1,0,0, 0,6,0,
-//                        4,1,0, 2,0,9, 6,7,5,
-//                        0,0,0, 7,0,8, 0,3,0,
-//                        3,2,7, 5,0,4, 8,0,1,
-//                        0,3,1, 0,0,0, 0,4,6,
-//                        9,0,0, 0,7,0, 0,0,0,
-//                        0,0,0, 4,0,0, 1,0,9 };
-
-// int EvilPuzzle[] = {   0,7,9, 8,4,0, 5,1,3,
-//                        1,8,0, 3,5,0, 0,0,0,
-//                        0,0,0, 1,9,0, 0,6,0,
-//                        4,1,0, 2,0,9, 6,7,5,
-//                        0,0,0, 7,0,8, 0,3,0,
-//                        3,2,7, 5,0,4, 8,0,1,
-//                        0,3,1, 0,0,0, 7,4,6,
-//                        9,0,0, 0,7,0, 0,0,0,
-//                        0,0,0, 4,0,0, 1,0,9 };
-
-int EvilPuzzleSolution[] = {   8,3,4, 5,6,1, 9,2,7,
-                               7,2,5, 9,8,4, 6,3,1,
-                               6,1,9, 2,3,7, 4,8,5,
-                               1,9,8, 7,5,6, 3,4,2,
-                               4,5,6, 1,2,3, 7,9,8,
-                               2,7,3, 4,9,8, 5,1,6,
-                               3,4,7, 6,1,2, 8,5,9,
-                               5,8,1, 3,7,9, 2,6,4,
-                               9,6,2, 8,4,5, 1,7,3   };
 
 
-// Added SetSolution to Prof's LoadGame when the cell is not hardwired
+
+// From Prof Lord's LoadPrintPuzzle.cpp
 void LoadGame(Puzzle * puzzle, int r, int c)
 {   
-    // Puzzle solPuzzle = *puzzle;
-    // Algorithms alg;
-
-    // alg.SolveBruteForce(&solPuzzle);
-
-    // cout<<"sol val: "<<solPuzzle.GetCell(0,0)->GetValue();
 
     Cell cell;
     cell.SetRow(r);
@@ -156,7 +122,8 @@ int main() {
 
     GameEngine g(&p, &h);
 
-    cout<<"algo test"<<endl;
+    cout<<"---------Algorithms test---------"<<endl;
+
     vector<Cell* > empty = alg.FindAllEmpty(&p);
     cout << "Size of Empty: " << empty.size() << endl;
 
@@ -177,21 +144,16 @@ int main() {
     cout<<"sol "<<p.GetCell(0,0)->GetSolution()<<endl;
     cout<<"sol "<<p.GetCell(0,1)->GetSolution()<<endl;
 
-    // g.SetCurrentValue(9);
-    // g.SetValue(0, 1);
-    // g.SetCurrentValue(3);
-    // g.SetValue(2, 1);
+    g.SetCurrentValue(9);
+    g.SetValue(0, 1);
+    g.SetCurrentValue(3);
+    g.SetValue(2, 1);
 
-    // vector<Cell*> errors = alg.FindAllErrors(&p);
-    // cout << "Size of Errors: " << errors.size() << endl;
+    vector<Cell*> errors = alg.FindAllErrors(&p);
+    cout << "Size of Errors: " << errors.size() << endl;
 
     int rank = alg.RankDifficulty(&p);
     cout<<rank<<endl;
-
-
-
-
-
 
 
     // Test setting a value in puzzle cell
