@@ -3,62 +3,6 @@
 using namespace std;
 
 /// <summary>
-/// Checks to see if a value has no conflicts along/in its row, column, and group
-/// </summary>
-/// <param name="puzzle"></param>
-/// <param name="row"></param>
-/// <param name="col"></param>
-/// <returns></returns>
-
-bool Algorithms:: CheckVal(Puzzle * puzzle, int row, int col)
-{
-    int solution = puzzle->GetCell(row, col)->GetSolution();
-    // Check for duplicate in row
-    for (int c = 0; c < 9; c++) {
-        if (c != col) {
-            if (puzzle->GetCell(row, c)->GetSolution() == solution) return false;
-        }
-    }
-    // Check for duplicate in col
-    for (int r = 0; r < 9; r++) {
-        if (r != row) {
-            if (puzzle->GetCell(r, col)->GetSolution() == solution) return false;
-        }
-    }
-    // Check for duplicate in group
-    for (int r = row/3*3; r < (row/3*3+3); r++) {
-        for (int c = col/3*3; c < (col/3*3+3); c++) {
-            if ((r != row) || (c != col)) {
-                if (puzzle->GetCell(r, c)->GetSolution() == solution) return false;
-            }
-        }
-    }
-    return true;
-}
-
-bool Algorithms:: SolveBruteForce(Puzzle* puzzle)
-{
-    for (int row = 0; row < 9; row++) {
-        for (int col = 0; col < 9; col++) {
-            Cell* cell;
-            cell = puzzle->GetCell(row, col);
-            if (cell->GetSolution() == 0) {
-                for (int val = 1; val < 10; val++) {
-                    cell->SetSolution(val);
-                    if (CheckVal(puzzle, row, col)) {
-                        if ((row == 8) && (col == 8)) { return true; }
-                        if (SolveBruteForce(puzzle)) { return true; }
-                    }
-                }
-                cell->SetSolution(0);
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-/// <summary>
 /// Puts into notes array of each cell in the puzzle, all possible values that don't
 /// conflict along/in its row, column, and group
 /// </summary>
@@ -190,21 +134,6 @@ bool Algorithms::UseOnlyChoice(Puzzle* puzzle) {
         }
     }
     return modified;
-}
-
-
-// checks if puzzle is complete and CORRECT --> for rankdifficulty we just need to check if puzzle is complete...
-bool Algorithms::CheckPuzzle(Puzzle* puzzle) {
-    for (int row = 0; row < 9; row++) {
-        for (int col = 0; col < 9; col++) {
-            Cell* cell;
-            cell = puzzle->GetCell(row, col);
-            if ((cell->GetSolution() != cell->GetValue()) && (cell->GetValue() != 0)) {
-                return false;
-            }
-        }
-    }
-    return true;
 }
 
 /*
