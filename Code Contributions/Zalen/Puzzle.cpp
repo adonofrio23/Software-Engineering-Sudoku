@@ -14,7 +14,7 @@ using namespace std;
     void Puzzle::SetCell(Cell cell){
         int currCellRow = cell.GetRow();
         int currCellCol = cell.GetCol();
-
+ 
         cells[currCellRow][currCellCol] = cell;
 
     }

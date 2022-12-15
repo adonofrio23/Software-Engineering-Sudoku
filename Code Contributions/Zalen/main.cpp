@@ -11,7 +11,7 @@
 using namespace std;
 
 
-int EvilPuzzle[] = {   0,0,4, 5,0,1, 9,0,0,
+int EvilPuzzle[] = {   0,0,4, 5,0,1, 9,0,0, 
                        0,2,0, 0,8,0, 0,3,0,
                        6,0,0, 0,0,0, 0,0,5,
                        0,0,8, 7,0,6, 3,0,0,
@@ -46,41 +46,10 @@ void LoadPuzzle(Puzzle* puzzle, int values[])
 }
 
 
-//LoopOverPuzzle(&puzzle, &PrintSolution);
-//
-
-// void PrintPuzzle(Puzzle* puzzle)
-// {
-//     std::cout << "\n";
-//     std::cout << "||===|===|===||===|===|===||===|===|===||\n";
-//     for (int r = 0; r < 9; r++) {
-//         for (int c = 0; c < 9; c++) {
-
-//             int v = puzzle->GetCell(r, c)->GetSolution();
-//             if ((c == 0) || (c == 3) || (c == 6)) {
-//                 std::cout << "||";
-//                 if (v != 0) std::cout << ' ' << v << ' ';
-//                 else std::cout << "   ";
-//             }
-//             else {
-//                 std::cout << "|";
-//                 if (v != 0) std::cout << ' ' << v << ' ';
-//                 else std::cout << "   ";
-//             }
-//             if (c == 8) {
-//                 std::cout << "||\n";
-//                 if ((r == 2) || (r == 5)) std::cout << "||===|===|===||===|===|===||===|===|===||\n";
-//                 else if (r != 8) std::cout << "||---|---|---||---|---|---||---|---|---||\n";
-//             }
-//         }
-//     }
-//     std::cout << "||===|===|===||===|===|===||===|===|===||\n";
-// }
 
 int main() {
     Puzzle* puzzle = new Puzzle();
-    int val = puzzle->GetCell(2,2)->GetValue();
-    LoadPuzzle(puzzle, EvilPuzzle);     // Create function to set array to puzzle type (I think this should be the LoadPuzzle function?)
+    LoadPuzzle(puzzle, EvilPuzzle);     
     PrintPuzzle(puzzle);
     cout << endl;
     SolveBruteForce(puzzle);

@@ -3,8 +3,10 @@
 
 #include "Puzzle.hpp"
 #include "Cell.hpp"
-//#include "History.hpp"
 #include "Algorithm.hpp"
+#include "Puzzle.cpp"
+#include "Cell.cpp"
+#include "Algorithm.cpp"
 
 #include <iostream>
 #include <string>

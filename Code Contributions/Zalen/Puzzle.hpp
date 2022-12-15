@@ -12,7 +12,7 @@ public:
     void SetSize(int sizeSet);
     int  GetSize();
     void SetDifficulty(int diff);
-    int  GetDifficulty();
+    int  GetDifficulty(); 
     Cell * GetCell(int row, int col);
     // void LoadPuzzle(Puzzle* puzzle, int* puzzleArray);
 
