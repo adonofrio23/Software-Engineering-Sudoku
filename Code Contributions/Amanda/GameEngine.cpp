@@ -5,7 +5,6 @@
 #include "../Anthony/Cell.h"
 #include "../Alexis/Entry.h"
 
-using namespace std;
 
 // similar to Setup (Puzzle* p, History* h)
 // constructor to initialize member variables and link puzzle and history pointers from main
@@ -26,13 +25,12 @@ void GameEngine::SetCurrentValue(int val)
     // check if val is in range
     if(val > 0 && val <= 9)
     {
-	// set currentValue
-	currentValue = val;
+		// set currentValue
+		currentValue = val;
     }
-    else
-    {
-	cout << "Invalid value!" << endl;
-    }
+	else{
+		currentValue = 0;
+	}
     return;
 }
 
@@ -55,14 +53,13 @@ bool GameEngine::SetValue(int row, int col)
     // check if row and col values are within range, leave function and return false if not
     if(row < 0 || row >= 9 || col < 0 || col >= 9)
     {
-	    cout << "Invalid cell!" << endl;
 	    return false;
     }
 
     // check if currentValue exists (once currentValue is set via SetCurrentValue, it exists)
     if(currentValue == 0)
     {
-	    cout << "Please set the value first!" << endl;
+	    //std::cout << "Please set the value first!" << endl;
 	    return false;
     }
 
@@ -83,7 +80,6 @@ bool GameEngine::SetValue(int row, int col)
     // check if cell is hardwired
     if(thisCell->isHardwired())
     {
-	    cout << "Invalid cell!" << endl;
 	    return false;
     }
     origCell->SetHardwired(false);
@@ -194,7 +190,7 @@ bool GameEngine::GetNotesMode()
 // stub to test correct push of history stack
 void GameEngine::PrintHistoryStack()
 {
-	cout << "History stack..." << endl;
+	std::cout << "History stack..." << endl;
 	History* reverseStack = new History();
 	while(!history->IsHistoryEmpty())
 	{
@@ -204,26 +200,26 @@ void GameEngine::PrintHistoryStack()
 		Cell* cellNew = entry->GetNewCell();
 		int* OrigNotes = cellOrig->GetNotes();
 		int* NewNotes = cellNew->GetNotes();
-		cout << "Original Entry: (" << cellOrig->GetRow() << ", " << cellOrig->GetCol() << "), val: " << cellOrig->GetValue() << ", notes: ";
+		std::cout << "Original Entry: (" << cellOrig->GetRow() << ", " << cellOrig->GetCol() << "), val: " << cellOrig->GetValue() << ", notes: ";
 		for(int i=0;i<16;i++)
 		{
-			cout << OrigNotes[i] << ", ";
+			std::cout << OrigNotes[i] << ", ";
 		}
-	        cout << "\nNew Entry: (" << cellNew->GetRow() << ", " << cellNew->GetCol() << "), val: " << cellNew->GetValue() << ", correct? ";
-	       	if(entry->IsCorrect())
-		       cout << "yes" << endl;
+	    std::cout << "\nNew Entry: (" << cellNew->GetRow() << ", " << cellNew->GetCol() << "), val: " << cellNew->GetValue() << ", correct? ";
+	    if(entry->IsCorrect())
+		    std::cout << "yes" << endl;
 		else
-			cout << "no" << endl;
-		cout << ", notes: ";
+			std::cout << "no" << endl;
+		std::cout << ", notes: ";
 		for(int i=0; i<16; i++)
 		{
-			cout << NewNotes[i] << ", ";
+			std::cout << NewNotes[i] << ", ";
 		}
 		reverseStack->PushHistory(entry);
-		cout << "------------------------------------------------------------------" << endl;
+		std::cout << "------------------------------------------------------------------" << endl;
 	}
 
-	cout << "Restacking history..." << endl;
+	std::cout << "Restacking history..." << endl;
 	while(!reverseStack->IsHistoryEmpty())
 	{
 		history->PushHistory(reverseStack->PopHistory());
