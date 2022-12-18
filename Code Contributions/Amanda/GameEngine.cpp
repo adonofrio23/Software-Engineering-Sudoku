@@ -31,7 +31,7 @@ void GameEngine::SetCurrentValue(int val)
 	else{
 		currentValue = 0;
 	}
-    return;
+    return; 
 }
 
 
@@ -156,6 +156,11 @@ bool GameEngine::SetValue(int row, int col)
 */
 int* GameEngine::SetNote(int row, int col)
 {
+	if(row<0 || row>=9 || col < 0 ||col>=9)
+	{
+		return NULL;
+	}
+
     Cell* thisCell = puzzle->GetCell(row, col);
     thisCell->SetNotes(currentValue-1, currentValue);
     return thisCell->GetNotes();
