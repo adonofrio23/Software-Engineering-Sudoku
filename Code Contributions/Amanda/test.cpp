@@ -1,3 +1,6 @@
+// main driver program with full integration
+// initially used as amanda's "unit" testing since game engine was reliant on representation team
+// then added to to fully integrate 
 #include <iostream>
 #include <vector>
 #include "GameEngine.h"
