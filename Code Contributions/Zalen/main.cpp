@@ -1,6 +1,6 @@
 #include "Puzzle.hpp"
 #include "Cell.hpp"
-// #include "History.hpp"
+#include "History.hpp"
 #include "Algorithms.hpp"
 #include "Algorithms.cpp"
 #include "Cell.cpp"
@@ -11,7 +11,7 @@
 using namespace std;
 
 
-int EvilPuzzle[] = {   0,0,4, 5,0,1, 9,0,0, 
+int EvilPuzzle[] = {   0,0,4, 5,0,1, 9,0,0,
                        0,2,0, 0,8,0, 0,3,0,
                        6,0,0, 0,0,0, 0,0,5,
                        0,0,8, 7,0,6, 3,0,0,
@@ -20,6 +20,26 @@ int EvilPuzzle[] = {   0,0,4, 5,0,1, 9,0,0,
                        3,0,0, 0,0,0, 0,0,9,
                        0,8,0, 0,7,0, 0,6,0,
                        0,0,2, 8,0,5, 1,0,0   };
+
+int MediumPuzzle[] = { 0,7,9, 0,4,0, 5,0,0,
+                       1,8,0, 3,5,0, 0,0,0,
+                       0,0,0, 1,0,0, 0,6,0,
+                       4,1,0, 2,0,9, 6,7,5,
+                       0,0,0, 7,0,8, 0,3,0,
+                       3,2,7, 5,0,4, 8,0,1,
+                       0,3,1, 0,0,0, 0,4,6,
+                       9,0,0, 0,7,0, 0,0,0,
+                       0,0,0, 4,0,0, 1,0,9 };
+
+int EasyPuzzle[] = {   0,7,9, 8,4,0, 5,1,3,
+                       1,8,0, 3,5,0, 0,0,0,
+                       0,0,0, 1,9,0, 0,6,0,
+                       4,1,0, 2,0,9, 6,7,5,
+                       0,0,0, 7,0,8, 0,3,0,
+                       3,2,7, 5,0,4, 8,0,1,
+                       0,3,1, 0,0,0, 7,4,6,
+                       9,0,0, 0,7,0, 0,0,0,
+                       0,0,0, 4,0,0, 1,0,9 };
 
 void LoadPuzzle(Puzzle* puzzle, int values[])
 {
@@ -49,7 +69,7 @@ void LoadPuzzle(Puzzle* puzzle, int values[])
 
 int main() {
     Puzzle* puzzle = new Puzzle();
-    LoadPuzzle(puzzle, EvilPuzzle);     
+    LoadPuzzle(puzzle, EasyPuzzle);     
     PrintPuzzle(puzzle);
     cout << endl;
     SolveBruteForce(puzzle);
