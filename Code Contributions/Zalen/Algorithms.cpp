@@ -1,10 +1,10 @@
- #include "Algorithms.hpp"
+ #include "../Dina/Algorithms.h"
  #include <iostream> 
 
 using namespace std;
 
 // CheckVal loops through and checks every value in the row, column, to see if it is valid
-bool CheckVal(Puzzle * puzzle, int row, int col) {
+bool Algorithms::CheckVal(Puzzle * puzzle, int row, int col) {
     	int val = puzzle->GetCell(row, col)->GetSolution();
     	
         if (val == 0)
@@ -32,7 +32,7 @@ bool CheckVal(Puzzle * puzzle, int row, int col) {
     }
 
 // Reference https://www.tutorialspoint.com/sudoku-solver-in-cplusplus 
-bool SolveBruteForce(Puzzle* puzzle) {
+bool Algorithms::SolveBruteForce(Puzzle* puzzle) {
 	for (int row = 0; row < 9; row++) {
 		for (int col = 0; col < 9; col++) {
 			Cell* cell;
@@ -56,7 +56,7 @@ bool SolveBruteForce(Puzzle* puzzle) {
 // CheckPuzzle checks if the puzzle is correct
 // Reference https://www.geeksforgeeks.org/check-if-given-sudoku-board-configuration-is-valid-or-not/
 
-bool CheckPuzzle(Puzzle* puzzle) {          // Check if the puzzle is correct against solution
+bool Algorithms::CheckPuzzle(Puzzle* puzzle) {          // Check if the puzzle is correct against solution
 	for (int row = 0; row < 9; row++) {
 		for (int col = 0; col < 9; col++) {
 			Cell* cell;
@@ -69,7 +69,7 @@ bool CheckPuzzle(Puzzle* puzzle) {          // Check if the puzzle is correct ag
 	return true;
 }
 
-void PrintPuzzle(Puzzle* puzzle)
+void Algorithms::PrintPuzzle(Puzzle* puzzle)
 {
     cout << "\n";
     cout << "||===|===|===||===|===|===||===|===|===||\n";

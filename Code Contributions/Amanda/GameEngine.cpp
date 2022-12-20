@@ -5,14 +5,13 @@
 #include "../Anthony/Cell.h"
 #include "../Alexis/Entry.h"
 
-using namespace std;
 
 // similar to Setup (Puzzle* p, History* h)
 // constructor to initialize member variables and link puzzle and history pointers from main
 GameEngine::GameEngine(Puzzle* p, History* h)
 {
 	puzzle = p;
-       	history = h;
+    history = h;
 
 	// initialized to zero (doesn't exist)
 	currentValue = 0;
@@ -26,14 +25,13 @@ void GameEngine::SetCurrentValue(int val)
     // check if val is in range
     if(val > 0 && val <= 9)
     {
-	// set currentValue
-	currentValue = val;
+		// set currentValue
+		currentValue = val;
     }
-    else
-    {
-	cout << "Invalid value!" << endl;
-    }
-    return;
+	else{
+		currentValue = 0;
+	}
+    return; 
 }
 
 
@@ -55,14 +53,13 @@ bool GameEngine::SetValue(int row, int col)
     // check if row and col values are within range, leave function and return false if not
     if(row < 0 || row >= 9 || col < 0 || col >= 9)
     {
-	    cout << "Invalid cell!" << endl;
 	    return false;
     }
 
     // check if currentValue exists (once currentValue is set via SetCurrentValue, it exists)
     if(currentValue == 0)
     {
-	    cout << "Please set the value first!" << endl;
+	    //std::cout << "Please set the value first!" << endl;
 	    return false;
     }
 
@@ -74,37 +71,41 @@ bool GameEngine::SetValue(int row, int col)
     origCell->SetCol(col);
     origCell->SetValue(thisCell->GetValue());
     origCell->SetSolution(thisCell->GetSolution());
+    int* origNotes = thisCell->GetNotes();
+    for(int i=0; i<16;i++)
+    {
+		origCell->SetNotes(i, origNotes[i]);
+    }
 
     // check if cell is hardwired
     if(thisCell->isHardwired())
     {
-	    cout << "Invalid cell!" << endl;
 	    return false;
     }
     origCell->SetHardwired(false);
 
     if(notesMode)
     {
-	// if in notes mode, erase value and set note
-	thisCell->SetValue(0);
-	if(thisCell->GetNotes()[currentValue - 1] == 0)
-	{
-		thisCell->SetNotes(currentValue-1, currentValue);
-	}
-	else
-	{
-		thisCell->SetNotes(currentValue-1, 0);
-	}
+		// if in notes mode, erase value and set note
+		thisCell->SetValue(0);
+		if(thisCell->GetNotes()[currentValue - 1] == 0)
+		{
+			thisCell->SetNotes(currentValue-1, currentValue);
+		}
+		else
+		{
+			thisCell->SetNotes(currentValue-1, 0);
+		}
     }
     else
     {
-	// if not in notes mode, set value and erase notes
-	thisCell->SetValue(currentValue);
-	int* notesArray = thisCell->GetNotes();
-	for(int i=0;i<16;i++)
-	{
-		notesArray[i] = 0;
-	}
+		// if not in notes mode, set value and erase notes
+		thisCell->SetValue(currentValue);
+		int* notesArray = thisCell->GetNotes();
+		for(int i=0;i<16;i++)
+		{
+			notesArray[i] = 0;
+		}
     }
 
     // set cell
@@ -119,8 +120,8 @@ bool GameEngine::SetValue(int row, int col)
     // check if history stack is empty
     if(history->IsHistoryEmpty())
     {
-	Entry* newEntry =  new Entry(origCell, thisCell, stat);
-	history->PushHistory(newEntry);	
+		Entry* newEntry =  new Entry(origCell, thisCell, stat);
+		history->PushHistory(newEntry);	
     }
     else
     {	
@@ -128,8 +129,8 @@ bool GameEngine::SetValue(int row, int col)
     	Entry* entry = history->PopHistory();
     	// Entry* entry = history->TopOfStack();
     
-	// if puzzle is incorrect, next entry is incorrect regardless of correctness of currentValue
-	if(entry->IsCorrect())
+		// if puzzle is incorrect, next entry is incorrect regardless of correctness of currentValue
+		if(entry->IsCorrect())
     	{
         	Entry* newEntry = new Entry(origCell, thisCell, stat);
         	history->PushHistory(entry);
@@ -155,6 +156,11 @@ bool GameEngine::SetValue(int row, int col)
 */
 int* GameEngine::SetNote(int row, int col)
 {
+	if(row<0 || row>=9 || col < 0 ||col>=9)
+	{
+		return NULL;
+	}
+
     Cell* thisCell = puzzle->GetCell(row, col);
     thisCell->SetNotes(currentValue-1, currentValue);
     return thisCell->GetNotes();
@@ -189,7 +195,7 @@ bool GameEngine::GetNotesMode()
 // stub to test correct push of history stack
 void GameEngine::PrintHistoryStack()
 {
-	cout << "History stack..." << endl;
+	std::cout << "History stack..." << endl;
 	History* reverseStack = new History();
 	while(!history->IsHistoryEmpty())
 	{
@@ -197,17 +203,28 @@ void GameEngine::PrintHistoryStack()
 		Entry* entry = history->PopHistory();
 		Cell* cellOrig = entry->GetOrigCell();
 		Cell* cellNew = entry->GetNewCell();
-		cout << "Original Entry: (" << cellOrig->GetRow() << ", " << cellOrig->GetCol() << "), val: " << cellOrig->GetValue()  <<  endl;
-	        cout << "New Entry: (" << cellNew->GetRow() << ", " << cellOrig->GetCol() << "), val: " << cellNew->GetValue() << "\tcorrect? ";
-	       	if(entry->IsCorrect())
-		       cout << "yes" << endl;
+		int* OrigNotes = cellOrig->GetNotes();
+		int* NewNotes = cellNew->GetNotes();
+		std::cout << "Original Entry: (" << cellOrig->GetRow() << ", " << cellOrig->GetCol() << "), val: " << cellOrig->GetValue() << ", notes: ";
+		for(int i=0;i<16;i++)
+		{
+			std::cout << OrigNotes[i] << ", ";
+		}
+	    std::cout << "\nNew Entry: (" << cellNew->GetRow() << ", " << cellNew->GetCol() << "), val: " << cellNew->GetValue() << ", correct? ";
+	    if(entry->IsCorrect())
+		    std::cout << "yes" << endl;
 		else
-			cout << "no" << endl;
+			std::cout << "no" << endl;
+		std::cout << ", notes: ";
+		for(int i=0; i<16; i++)
+		{
+			std::cout << NewNotes[i] << ", ";
+		}
 		reverseStack->PushHistory(entry);
-		cout << "------------------------------------------------------------------" << endl;
+		std::cout << "------------------------------------------------------------------" << endl;
 	}
 
-	cout << "Restacking history..." << endl;
+	std::cout << "Restacking history..." << endl;
 	while(!reverseStack->IsHistoryEmpty())
 	{
 		history->PushHistory(reverseStack->PopHistory());

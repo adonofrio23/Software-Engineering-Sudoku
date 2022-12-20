@@ -3,7 +3,7 @@
 class Cell
 {
     public:
-    // Member Functions()
+    // Member Functions
     int GetSolution();
     void SetSolution(int answer);
     
@@ -15,8 +15,10 @@ class Cell
     
     int * GetNotes();
     void SetNotes(int index, int value);
+    /*
     void InitializeNotes();
     void PrintNotes();
+    */
 
     int GetRow();
     void SetRow(int r);
@@ -25,7 +27,7 @@ class Cell
     void SetCol(int c);
 
     private:
-    // Data  Members
+    // Cell Variables
     int value;
     int notes [16];
     bool hardwired;

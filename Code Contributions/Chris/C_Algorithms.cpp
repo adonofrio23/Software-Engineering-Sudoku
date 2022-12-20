@@ -1,5 +1,5 @@
-#include "..Dina/Algorithms.h"
-#include "..Anthony/Cell.h"
+#include "../Dina/Algorithms.h"
+#include "../Anthony/Cell.h"
 #include <iostream>
 #include <vector>
 
